@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Register to bid – Deposit</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap">
+<style>
+body{margin:0}
+a{color:#0F2A44}a:hover{color:#1B4470}
+</style>
+<style>
+#dc-root div[style*="overflow-x: auto"]{position:relative}
+@media (max-width:860px){aside{min-width:0}}
+@media (max-width:520px){
+header > div{gap:12px !important;padding-left:16px !important;padding-right:16px !important}
+header a[style*="padding: 0 18px; height: 44px"]{padding:0 12px !important}
+}
+</style>
+<style>
+body{min-height:100vh;background:#3A4656 !important;padding:48px 16px;box-sizing:border-box}
+#dc-root{display:flex;justify-content:center}
+#dc-root > section[role=dialog]{width:min(560px,100%) !important;height:auto !important;min-height:780px;box-shadow:0 24px 64px rgba(5,18,32,.4)}
+@media (max-width:600px){body{padding:0}#dc-root > section[role=dialog]{border-radius:0 !important;min-height:100vh}}
+</style>
+</head>
+<body>
+<template id="dc-tpl">
+<section role="dialog" aria-modal="true" aria-labelledby="s3-title" style="width: 560px; height: 820px; box-sizing: border-box; font-family: 'Inter', system-ui, sans-serif; color: #14202E; background: #FFFFFF; border-radius: 16px; display: flex; flex-direction: column; overflow: hidden; font-variant-numeric: tabular-nums">
+
+<div style="padding: 20px 22px 16px; display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; border-bottom: 1px solid #E9ECF0">
+<div style="display: flex; flex-direction: column; gap: 3px">
+<h2 id="s3-title" style="margin: 0; font-size: 19px; font-weight: 700; color: #0F2A44">Register to bid</h2>
+<p style="margin: 0; font-size: 12px; color: #5A6675">Hampton Inn Springfield South</p>
+</div>
+<a href="listing.html" aria-label="Close" style="width: 44px; height: 44px; margin: -8px -10px 0 0; display: inline-flex; align-items: center; justify-content: center; color: #3D4A5A">
+<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"></path></svg>
+</a>
+</div>
+
+<ol aria-label="Registration steps" style="list-style: none; margin: 0; padding: 14px 22px; display: flex; align-items: center; gap: 8px; background: #F9FAFB; border-bottom: 1px solid #E9ECF0">
+<li style="display: flex; align-items: center; gap: 8px; flex-shrink: 0">
+<span style="width: 26px; height: 26px; border-radius: 999px; background: #0F2A44; color: #FFFFFF; display: inline-flex; align-items: center; justify-content: center"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5 9-10"></path></svg></span>
+<span style="font-size: 13px; color: #3D4A5A">Sign NDA</span>
+</li>
+<li aria-hidden="true" style="flex: 1 1 auto; height: 2px; background: #0F2A44"></li>
+<li style="display: flex; align-items: center; gap: 8px; flex-shrink: 0">
+<span style="width: 26px; height: 26px; border-radius: 999px; background: #0F2A44; color: #FFFFFF; display: inline-flex; align-items: center; justify-content: center"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5 9-10"></path></svg></span>
+<span style="font-size: 13px; color: #3D4A5A">Proof of funds</span>
+</li>
+<li aria-hidden="true" style="flex: 1 1 auto; height: 2px; background: #0F2A44"></li>
+<li aria-current="step" style="display: flex; align-items: center; gap: 8px; flex-shrink: 0">
+<span style="width: 26px; height: 26px; border-radius: 999px; border: 2px solid #0F2A44; color: #0F2A44; box-sizing: border-box; display: inline-flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700">3</span>
+<span style="font-size: 13px; font-weight: 700; color: #0F2A44">Deposit</span>
+</li>
+</ol>
+
+<div style="padding: 20px 22px; display: flex; flex-direction: column; gap: 18px; flex: 1 1 auto">
+<div style="display: flex; flex-direction: column; gap: 4px">
+<h3 style="margin: 0; font-size: 17px; font-weight: 700">Refundable bidder deposit</h3>
+<p style="margin: 0; font-size: 14px; line-height: 1.5; color: #3D4A5A">A deposit is required before you can bid on this hotel.</p>
+</div>
+
+<div style="border: 1px solid #E3E6EB; border-radius: 12px; padding: 18px; display: flex; flex-direction: column; gap: 10px; background: #F9FAFB">
+<span style="font-size: 13px; font-weight: 600; color: #4A5666">Deposit amount</span>
+<span style="font-size: 36px; line-height: 1.1; font-weight: 700; color: #0F2A44; letter-spacing: -0.02em">$50,000</span>
+<ul style="list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 6px">
+<li style="display: flex; gap: 8px; font-size: 13px; color: #2B3746"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0F2A44" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink: 0"><path d="m5 12 5 5 9-10"></path></svg>Fully refundable and released if you don't win</li>
+<li style="display: flex; gap: 8px; font-size: 13px; color: #2B3746"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0F2A44" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink: 0"><path d="m5 12 5 5 9-10"></path></svg>Held on your card or by wire, not charged</li>
+</ul>
+</div>
+
+<fieldset style="margin: 0; padding: 0; border: 0; display: flex; flex-direction: column; gap: 10px">
+<legend style="padding: 0; margin-bottom: 10px; font-size: 14px; font-weight: 600">How would you like to hold it?</legend>
+<template data-sc="for" list="{{methods}}" as="m" hint-placeholder-count="2">
+<label style="display: flex; gap: 12px; align-items: flex-start; padding: 14px; border-radius: 10px; border: {{m.border}}; background: {{m.bg}}; cursor: pointer">
+<input type="radio" name="deposit-method" checked="{{m.checked}}" onChange="{{m.pick}}" style="width: 18px; height: 18px; margin: 1px 0 0; accent-color: #0F2A44; flex-shrink: 0">
+<span style="display: flex; flex-direction: column; gap: 3px">
+<span style="font-size: 14px; font-weight: 600; color: #14202E">{{m.title}}</span>
+<span style="font-size: 13px; line-height: 1.45; color: #4A5666">{{m.desc}}</span>
+</span>
+</label>
+</template>
+</fieldset>
+
+<p style="margin: 0; font-size: 12px; line-height: 1.5; color: #4A5666">If you win, how the deposit is applied is set out in the <a href="#">auction rules</a>.</p>
+</div>
+
+<div style="padding: 14px 22px; border-top: 1px solid #E9ECF0; display: flex; justify-content: space-between; gap: 12px">
+<a href="register-funds.html" style="height: 46px; padding: 0 18px; display: inline-flex; align-items: center; gap: 6px; border: 1px solid #D5DAE1; border-radius: 8px; color: #0F2A44; text-decoration: none; font-size: 15px; font-weight: 600">
+<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 18-6-6 6-6"></path></svg>Back</a>
+<a href="listing.html" style="height: 46px; padding: 0 20px; display: inline-flex; align-items: center; border-radius: 8px; background: #0F2A44; color: #FFFFFF; text-decoration: none; font-size: 15px; font-weight: 600">{{cta}}</a>
+</div>
+</section>
+</template>
+<div id="dc-root"></div>
+<script src="runtime.js"></script>
+<script>
+class Component extends DCLogic {
+  renderVals() {
+    var self = this;
+    var s = this.state || {};
+    var method = s.method || 'card';
+    var methods = [
+      { id: 'card', title: 'Hold on card', desc: 'Visa ending 4821. An authorization hold, not a charge.' },
+      { id: 'wire', title: 'Wire transfer', desc: 'We email wire instructions. Allow 1 business day for it to arrive.' }
+    ].map(function (m) {
+      var on = method === m.id;
+      return {
+        title: m.title, desc: m.desc, checked: on,
+        border: on ? '2px solid #0F2A44' : '1px solid #D5DAE1',
+        bg: on ? '#F3F6FA' : '#FFFFFF',
+        pick: function () { self.setState({ method: m.id }); }
+      };
+    });
+    return {
+      methods: methods,
+      cta: method === 'card' ? 'Hold $50,000 and finish' : 'Get wire instructions'
+    };
+  }
+}
+DC.mount(Component, {});
+</script>
+</body>
+</html>

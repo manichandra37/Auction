@@ -1,0 +1,513 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Search results – hotel auctions</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap">
+<style>
+body{margin:0;background:#F6F7F9}
+a{color:#0F2A44}a:hover{color:#1B4470}
+input::placeholder{color:#6B7684}
+.site-nav{display:flex}
+.menu-btn{display:none}
+.filters-btn{display:none}
+.sheet-only{display:none}
+.sheet-scrim{display:none}
+.filter-panel{flex:0 0 288px;position:relative}
+.map-col{position:sticky;top:16px}
+.dual{position:relative;height:28px}
+.dual input[type=range]{position:absolute;left:0;top:0;width:100%;height:28px;margin:0;background:none;pointer-events:none;-webkit-appearance:none;appearance:none}
+.dual input[type=range]::-webkit-slider-runnable-track{background:none;height:28px}
+.dual input[type=range]::-webkit-slider-thumb{pointer-events:auto;-webkit-appearance:none;width:22px;height:22px;margin-top:3px;border-radius:50%;background:#FFFFFF;border:2px solid #0F2A44;cursor:pointer;box-shadow:0 1px 3px rgba(15,42,68,.25)}
+.dual input[type=range]::-moz-range-track{background:none}
+.dual input[type=range]::-moz-range-thumb{pointer-events:auto;width:18px;height:18px;border-radius:50%;background:#FFFFFF;border:2px solid #0F2A44;cursor:pointer}
+.dual input[type=range]:focus-visible::-webkit-slider-thumb{outline:3px solid #8DB3DA;outline-offset:2px}
+@media (max-width: 920px){
+.site-nav{display:none}.menu-btn{display:inline-flex}.signin{display:none}
+.filters-btn{display:inline-flex}
+.sheet-only{display:inline-flex}
+.filter-panel{position:fixed;left:0;right:0;bottom:0;z-index:60;max-height:86vh;overflow-y:auto;border-radius:16px 16px 0 0 !important;transform:translateY(105%);transition:transform .25s ease;box-shadow:0 -12px 32px rgba(5,18,32,.25)}
+.filter-panel.open{transform:none}
+.sheet-scrim.open{display:block}
+.map-col{position:relative;top:auto;order:-1;height:300px !important}
+}
+</style>
+<style>
+#dc-root div[style*="overflow-x: auto"]{position:relative}
+@media (max-width:860px){aside{min-width:0}}
+@media (max-width:520px){
+header > div{gap:12px !important;padding-left:16px !important;padding-right:16px !important}
+header a[style*="padding: 0 18px; height: 44px"]{padding:0 12px !important}
+}
+</style>
+
+</head>
+<body>
+<template id="dc-tpl">
+<div style="font-family: 'Inter', system-ui, sans-serif; color: #14202E; background: #F6F7F9; font-variant-numeric: tabular-nums; min-height: 100vh">
+
+<!-- Header -->
+<header style="background: #0F2A44">
+<div style="max-width: 1600px; margin: 0 auto; padding: 0 24px; height: 72px; display: flex; align-items: center; gap: 32px">
+<a href="index.html" style="display: flex; align-items: center; gap: 10px; text-decoration: none; color: #FFFFFF; flex-shrink: 0">
+<span style="width: 32px; height: 32px; border-radius: 8px; background: #FFFFFF; display: inline-flex; align-items: center; justify-content: center">
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0F2A44" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 21V7l8-4 8 4v14"></path><path d="M9 21v-5h6v5"></path><path d="M9 10h.01M15 10h.01"></path></svg>
+</span>
+<span style="font-size: 18px; font-weight: 700; letter-spacing: -0.01em">[Your brand]</span>
+</a>
+<nav class="site-nav" aria-label="Main" style="align-items: center; gap: 4px; flex: 1 1 auto">
+<a href="#" aria-current="page" style="color: #FFFFFF; text-decoration: none; font-size: 15px; font-weight: 600; padding: 12px 14px; border-radius: 8px; background: rgba(255,255,255,0.1)">Buy hotels</a>
+<a href="sell-financials.html" style="color: #D3DDE8; text-decoration: none; font-size: 15px; font-weight: 500; padding: 12px 14px; border-radius: 8px">Sell a hotel</a>
+<a href="index.html" style="color: #D3DDE8; text-decoration: none; font-size: 15px; font-weight: 500; padding: 12px 14px; border-radius: 8px">How it works</a>
+<a href="my-bids.html" style="color: #D3DDE8; text-decoration: none; font-size: 15px; font-weight: 500; padding: 12px 14px; border-radius: 8px">My bids</a>
+</nav>
+<div style="display: flex; align-items: center; gap: 8px; margin-left: auto">
+<a href="my-bids.html" class="signin" style="color: #FFFFFF; text-decoration: none; font-size: 15px; font-weight: 500; padding: 12px 14px">Sign in</a>
+<a href="sell-financials.html" style="background: #FFFFFF; color: #0F2A44; text-decoration: none; font-size: 15px; font-weight: 600; padding: 0 18px; height: 44px; display: inline-flex; align-items: center; border-radius: 8px; white-space: nowrap">List your hotel</a>
+<button type="button" class="menu-btn" aria-label="Open menu" style="width: 44px; height: 44px; align-items: center; justify-content: center; background: transparent; border: 1px solid rgba(255,255,255,0.3); border-radius: 8px; color: #FFFFFF; cursor: pointer">
+<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"></path></svg>
+</button>
+</div>
+</div>
+</header>
+
+<button type="button" class="sheet-scrim {{sheetClass}}" aria-label="Close filters" onClick="{{closeSheet}}" style="position: fixed; inset: 0; z-index: 55; background: rgba(5,18,32,0.45); border: 0; padding: 0; cursor: pointer"></button>
+
+<main style="max-width: 1600px; margin: 0 auto; padding: 24px; display: flex; flex-wrap: wrap; gap: 24px; align-items: flex-start">
+
+<!-- Filter panel / bottom sheet -->
+<aside class="filter-panel {{sheetClass}}" aria-label="Filters" style="background: #FFFFFF; border: 1px solid #E3E6EB; border-radius: 12px; display: flex; flex-direction: column">
+<div style="padding: 18px 20px 14px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid #E9ECF0">
+<h2 style="margin: 0; font-size: 17px; font-weight: 700; color: #0F2A44">Filters</h2>
+<button type="button" class="sheet-only" aria-label="Close filters" onClick="{{closeSheet}}" style="width: 44px; height: 44px; align-items: center; justify-content: center; border: 0; background: transparent; color: #3D4A5A; cursor: pointer; margin-right: -10px">
+<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"></path></svg>
+</button>
+</div>
+
+<div style="padding: 4px 20px 8px; display: flex; flex-direction: column">
+
+<div style="padding: 16px 0; border-bottom: 1px solid #E9ECF0; display: flex; flex-direction: column; gap: 8px">
+<label for="f-loc" style="font-size: 14px; font-weight: 600; color: #14202E">Location</label>
+<input id="f-loc" type="text" placeholder="City, state or market" style="height: 44px; border: 1px solid #D5DAE1; border-radius: 8px; padding: 0 12px; font: inherit; font-size: 15px; color: #14202E; background: #FFFFFF; min-width: 0">
+</div>
+
+<fieldset style="margin: 0; padding: 16px 0; border: 0; border-bottom: 1px solid #E9ECF0; display: flex; flex-direction: column; gap: 2px">
+<legend style="padding: 0; font-size: 14px; font-weight: 600; color: #14202E; margin-bottom: 6px">Hotel type</legend>
+<template data-sc="for" list="{{types}}" as="t" hint-placeholder-count="6">
+<label style="display: flex; align-items: center; gap: 10px; min-height: 36px; font-size: 14px; color: #14202E; cursor: pointer">
+<input type="checkbox" checked="{{t.checked}}" onChange="{{t.toggle}}" style="width: 18px; height: 18px; margin: 0; accent-color: #0F2A44">
+<span style="flex: 1 1 auto">{{t.label}}</span>
+<span style="font-size: 13px; color: #5A6675">{{t.count}}</span>
+</label>
+</template>
+</fieldset>
+
+<div style="padding: 16px 0; border-bottom: 1px solid #E9ECF0; display: flex; flex-direction: column; gap: 10px">
+<div style="display: flex; justify-content: space-between; align-items: baseline">
+<span id="price-label" style="font-size: 14px; font-weight: 600; color: #14202E">Price range</span>
+<span style="font-size: 13px; font-weight: 600; color: #0F2A44">{{priceText}}</span>
+</div>
+<div class="dual" role="group" aria-labelledby="price-label">
+<div style="position: absolute; left: 0; right: 0; top: 12px; height: 4px; border-radius: 4px; background: #E3E6EB"></div>
+<div style="position: absolute; top: 12px; height: 4px; border-radius: 4px; background: #0F2A44; left: {{fillLeft}}; width: {{fillWidth}}"></div>
+<input type="range" min="0" max="25000000" step="250000" value="{{priceMin}}" onChange="{{onPriceMin}}" aria-label="Minimum price" aria-valuetext="{{priceMinText}}">
+<input type="range" min="0" max="25000000" step="250000" value="{{priceMax}}" onChange="{{onPriceMax}}" aria-label="Maximum price" aria-valuetext="{{priceMaxText}}">
+</div>
+<div style="display: flex; justify-content: space-between; font-size: 12px; color: #5A6675"><span>$0</span><span>$25M+</span></div>
+</div>
+
+<fieldset style="margin: 0; padding: 16px 0; border: 0; border-bottom: 1px solid #E9ECF0; display: flex; flex-direction: column; gap: 8px">
+<legend style="padding: 0; font-size: 14px; font-weight: 600; color: #14202E; margin-bottom: 6px">Number of keys (rooms)</legend>
+<div style="display: flex; align-items: center; gap: 8px">
+<label style="flex: 1 1 0; display: flex; flex-direction: column; gap: 4px; font-size: 12px; color: #5A6675">Min
+<input type="number" inputmode="numeric" placeholder="10" style="height: 40px; border: 1px solid #D5DAE1; border-radius: 8px; padding: 0 10px; font: inherit; font-size: 14px; color: #14202E; min-width: 0">
+</label>
+<span aria-hidden="true" style="color: #A9B2BD; padding-top: 18px">–</span>
+<label style="flex: 1 1 0; display: flex; flex-direction: column; gap: 4px; font-size: 12px; color: #5A6675">Max
+<input type="number" inputmode="numeric" placeholder="250+" style="height: 40px; border: 1px solid #D5DAE1; border-radius: 8px; padding: 0 10px; font: inherit; font-size: 14px; color: #14202E; min-width: 0">
+</label>
+</div>
+</fieldset>
+
+<div style="padding: 16px 0; border-bottom: 1px solid #E9ECF0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px">
+<label style="display: flex; flex-direction: column; gap: 6px; font-size: 14px; font-weight: 600; color: #14202E">Occupancy min
+<span style="position: relative; display: flex">
+<input type="number" inputmode="decimal" placeholder="Any" style="width: 100%; height: 40px; border: 1px solid #D5DAE1; border-radius: 8px; padding: 0 28px 0 10px; font: inherit; font-size: 14px; font-weight: 400; color: #14202E; min-width: 0; box-sizing: border-box">
+<span aria-hidden="true" style="position: absolute; right: 10px; top: 10px; font-size: 14px; font-weight: 400; color: #5A6675">%</span>
+</span>
+</label>
+<label style="display: flex; flex-direction: column; gap: 6px; font-size: 14px; font-weight: 600; color: #14202E">Cap rate min
+<span style="position: relative; display: flex">
+<input type="number" inputmode="decimal" placeholder="Any" style="width: 100%; height: 40px; border: 1px solid #D5DAE1; border-radius: 8px; padding: 0 28px 0 10px; font: inherit; font-size: 14px; font-weight: 400; color: #14202E; min-width: 0; box-sizing: border-box">
+<span aria-hidden="true" style="position: absolute; right: 10px; top: 10px; font-size: 14px; font-weight: 400; color: #5A6675">%</span>
+</span>
+</label>
+</div>
+
+<fieldset style="margin: 0; padding: 16px 0; border: 0; border-bottom: 1px solid #E9ECF0; display: flex; flex-direction: column; gap: 8px">
+<legend style="padding: 0; font-size: 14px; font-weight: 600; color: #14202E; margin-bottom: 6px">Year built or renovated</legend>
+<div style="display: flex; align-items: center; gap: 8px">
+<label style="flex: 1 1 0; display: flex; flex-direction: column; gap: 4px; font-size: 12px; color: #5A6675">From
+<input type="number" inputmode="numeric" placeholder="1960" style="height: 40px; border: 1px solid #D5DAE1; border-radius: 8px; padding: 0 10px; font: inherit; font-size: 14px; color: #14202E; min-width: 0">
+</label>
+<span aria-hidden="true" style="color: #A9B2BD; padding-top: 18px">–</span>
+<label style="flex: 1 1 0; display: flex; flex-direction: column; gap: 4px; font-size: 12px; color: #5A6675">To
+<input type="number" inputmode="numeric" placeholder="2026" style="height: 40px; border: 1px solid #D5DAE1; border-radius: 8px; padding: 0 10px; font: inherit; font-size: 14px; color: #14202E; min-width: 0">
+</label>
+</div>
+</fieldset>
+
+<fieldset style="margin: 0; padding: 16px 0; border: 0; border-bottom: 1px solid #E9ECF0">
+<legend style="padding: 0; font-size: 14px; font-weight: 600; color: #14202E; margin-bottom: 10px">Franchise</legend>
+<div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border: 1px solid #D5DAE1; border-radius: 8px; overflow: hidden">
+<template data-sc="for" list="{{franchise}}" as="fr" hint-placeholder-count="3">
+<label style="position: relative; display: flex; align-items: center; justify-content: center; min-height: 40px; font-size: 13px; cursor: pointer; background: {{fr.bg}}; color: {{fr.fg}}; font-weight: {{fr.weight}}">
+<input type="radio" name="franchise" checked="{{fr.checked}}" onChange="{{fr.pick}}" style="position: absolute; opacity: 0; width: 1px; height: 1px">
+{{fr.label}}
+</label>
+</template>
+</div>
+</fieldset>
+
+<fieldset style="margin: 0; padding: 16px 0; border: 0; border-bottom: 1px solid #E9ECF0; display: flex; flex-direction: column; gap: 2px">
+<legend style="padding: 0; font-size: 14px; font-weight: 600; color: #14202E; margin-bottom: 6px">Auction status</legend>
+<template data-sc="for" list="{{statuses}}" as="st" hint-placeholder-count="3">
+<label style="display: flex; align-items: center; gap: 10px; min-height: 36px; font-size: 14px; color: #14202E; cursor: pointer">
+<input type="checkbox" checked="{{st.checked}}" onChange="{{st.toggle}}" style="width: 18px; height: 18px; margin: 0; accent-color: #0F2A44">
+<span style="flex: 1 1 auto">{{st.label}}</span>
+<span style="font-size: 13px; color: #5A6675">{{st.count}}</span>
+</label>
+</template>
+</fieldset>
+
+<fieldset style="margin: 0; padding: 16px 0; border: 0; display: flex; flex-direction: column; gap: 2px">
+<legend style="padding: 0; font-size: 14px; font-weight: 600; color: #14202E; margin-bottom: 6px">Reserve</legend>
+<template data-sc="for" list="{{reserves}}" as="rv" hint-placeholder-count="2">
+<label style="display: flex; align-items: center; gap: 10px; min-height: 36px; font-size: 14px; color: #14202E; cursor: pointer">
+<input type="checkbox" checked="{{rv.checked}}" onChange="{{rv.toggle}}" style="width: 18px; height: 18px; margin: 0; accent-color: #0F2A44">
+<span>{{rv.label}}</span>
+</label>
+</template>
+</fieldset>
+</div>
+
+<div style="position: sticky; bottom: 0; background: #FFFFFF; border-top: 1px solid #E9ECF0; border-radius: 0 0 12px 12px; padding: 14px 20px; display: flex; gap: 10px">
+<button type="button" onClick="{{clearAll}}" style="flex: 1 1 0; height: 44px; border: 1px solid #D5DAE1; background: #FFFFFF; color: #0F2A44; border-radius: 8px; font: inherit; font-size: 15px; font-weight: 600; cursor: pointer">Clear all</button>
+<button type="button" onClick="{{closeSheet}}" style="flex: 1 1 0; height: 44px; border: 0; background: #0F2A44; color: #FFFFFF; border-radius: 8px; font: inherit; font-size: 15px; font-weight: 600; cursor: pointer">Apply</button>
+</div>
+</aside>
+
+<!-- Results -->
+<section aria-label="Results" style="flex: 999 1 600px; min-width: 0; display: flex; flex-direction: column; gap: 16px">
+
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 12px">
+<h1 style="margin: 0 auto 0 0; font-size: 24px; font-weight: 700; letter-spacing: -0.02em; color: #0F2A44">42 hotels</h1>
+<button type="button" class="filters-btn" onClick="{{openSheet}}" style="height: 44px; padding: 0 14px; align-items: center; gap: 8px; border: 1px solid #D5DAE1; background: #FFFFFF; color: #0F2A44; border-radius: 8px; font: inherit; font-size: 14px; font-weight: 600; cursor: pointer">
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 6h16M7 12h10M10 18h4"></path></svg>
+Filters
+<span style="min-width: 20px; height: 20px; padding: 0 6px; box-sizing: border-box; border-radius: 999px; background: #0F2A44; color: #FFFFFF; font-size: 12px; display: inline-flex; align-items: center; justify-content: center">{{activeCount}}</span>
+</button>
+<label style="display: flex; align-items: center; gap: 8px; font-size: 14px; color: #4A5666">Sort by
+<select value="{{sort}}" onChange="{{onSort}}" style="height: 44px; border: 1px solid #D5DAE1; border-radius: 8px; padding: 0 10px; font: inherit; font-size: 14px; font-weight: 600; color: #14202E; background: #FFFFFF">
+<option value="ending">Ending soonest</option>
+<option value="newest">Newest</option>
+<option value="price">Lowest price</option>
+<option value="cap">Highest cap rate</option>
+<option value="ppk">Price per key</option>
+</select>
+</label>
+<div role="group" aria-label="View" style="display: inline-flex; border: 1px solid #D5DAE1; border-radius: 8px; overflow: hidden; background: #FFFFFF">
+<template data-sc="for" list="{{views}}" as="v" hint-placeholder-count="2">
+<button type="button" aria-pressed="{{v.selected}}" onClick="{{v.pick}}" style="height: 42px; padding: 0 14px; border: 0; display: inline-flex; align-items: center; gap: 6px; font: inherit; font-size: 14px; cursor: pointer; background: {{v.bg}}; color: {{v.fg}}; font-weight: {{v.weight}}">{{v.label}}</button>
+</template>
+</div>
+</div>
+
+<div style="display: flex; flex-wrap: wrap; gap: 20px; align-items: flex-start">
+
+<!-- Card list -->
+<div style="flex: 999 1 540px; min-width: 0; display: flex; flex-direction: column; gap: 20px">
+<div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 280px), 1fr)); gap: 16px">
+<template data-sc="for" list="{{cards}}" as="item" hint-placeholder-count="8">
+<article onMouseEnter="{{item.enter}}" onMouseLeave="{{item.leave}}" style="background: #FFFFFF; border: 1px solid {{item.border}}; box-shadow: {{item.shadow}}; border-radius: 12px; overflow: hidden; display: flex; flex-direction: column; transition: box-shadow .15s, border-color .15s">
+<div style="position: relative; aspect-ratio: 16 / 10; background: #DFE3E8; display: flex; align-items: center; justify-content: center">
+<svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#A9B2BD" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"></rect><circle cx="9" cy="10" r="1.6"></circle><path d="m21 16-5-5-8 8"></path></svg>
+<div style="position: absolute; top: 12px; left: 12px; display: flex; gap: 6px">
+<template data-sc="if" value="{{item.soon}}" hint-placeholder-val="{{true}}">
+<span style="display: inline-flex; align-items: center; gap: 5px; height: 26px; padding: 0 10px; border-radius: 999px; background: #FDF0D5; color: #7A4A00; font-size: 12px; font-weight: 600; border: 1px solid #F2D49B">
+<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 2"></path></svg>
+{{item.ends}}</span>
+</template>
+<template data-sc="if" value="{{item.later}}" hint-placeholder-val="{{false}}">
+<span style="display: inline-flex; align-items: center; gap: 5px; height: 26px; padding: 0 10px; border-radius: 999px; background: #FFFFFF; color: #3D4A5A; font-size: 12px; font-weight: 600; border: 1px solid #DDE2E8">
+<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 2"></path></svg>
+{{item.ends}}</span>
+</template>
+</div>
+<span style="position: absolute; left: 12px; bottom: 12px; height: 26px; padding: 0 10px; display: inline-flex; align-items: center; border-radius: 6px; background: #0F2A44; color: #FFFFFF; font-size: 12px; font-weight: 600">{{item.type}}</span>
+<button type="button" aria-pressed="{{item.watched}}" aria-label="{{item.heartLabel}}" onClick="{{item.toggle}}" style="position: absolute; top: 6px; right: 6px; width: 44px; height: 44px; border-radius: 999px; border: 0; background: transparent; display: flex; align-items: center; justify-content: center; cursor: pointer">
+<span style="width: 34px; height: 34px; border-radius: 999px; background: #FFFFFF; display: flex; align-items: center; justify-content: center; box-shadow: 0 1px 3px rgba(15,42,68,0.2)">
+<svg width="18" height="18" viewBox="0 0 24 24" fill="{{item.heartFill}}" stroke="{{item.heartStroke}}" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M12 20s-7-4.4-9.2-9A4.8 4.8 0 0 1 12 6.3 4.8 4.8 0 0 1 21.2 11C19 15.6 12 20 12 20z"></path></svg>
+</span>
+</button>
+</div>
+
+<div style="padding: 14px 16px 16px; display: flex; flex-direction: column; gap: 10px; flex: 1 1 auto">
+<div style="display: flex; flex-direction: column; gap: 3px">
+<h3 style="margin: 0; font-size: 16px; font-weight: 600; line-height: 1.3"><a href="listing.html" onFocus="{{item.enter}}" onBlur="{{item.leave}}" style="color: #14202E; text-decoration: none">{{item.name}}</a></h3>
+<p style="margin: 0; font-size: 13px; color: #5A6675">{{item.city}}</p>
+</div>
+<p style="margin: 0; font-size: 13px; color: #3D4A5A">{{item.meta}}</p>
+<dl style="margin: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; background: #F6F7F9; border-radius: 8px; padding: 9px 12px">
+<div style="display: flex; flex-direction: column; gap: 2px">
+<dt style="font-size: 11px; color: #5A6675; font-weight: 500">Occupancy</dt>
+<dd style="margin: 0; font-size: 15px; font-weight: 600; color: #14202E">{{item.occText}}</dd>
+</div>
+<div style="display: flex; flex-direction: column; gap: 2px">
+<dt style="font-size: 11px; color: #5A6675; font-weight: 500">ADR</dt>
+<dd style="margin: 0; font-size: 15px; font-weight: 600; color: #14202E">{{item.adrText}}</dd>
+</div>
+<div style="display: flex; flex-direction: column; gap: 2px">
+<dt style="font-size: 11px; color: #5A6675; font-weight: 500">Cap rate</dt>
+<dd style="margin: 0; font-size: 15px; font-weight: 600; color: #14202E">{{item.capText}}</dd>
+</div>
+</dl>
+<div style="border-top: 1px solid #E9ECF0; padding-top: 10px; margin-top: auto; display: flex; flex-direction: column; gap: 2px">
+<span style="font-size: 12px; color: #5A6675; font-weight: 500">Current bid</span>
+<span style="font-size: 24px; font-weight: 700; color: #0F2A44; letter-spacing: -0.02em">{{item.bidText}}</span>
+<span style="font-size: 13px; color: #3D4A5A; display: flex; align-items: center; gap: 6px; flex-wrap: wrap">
+<span>{{item.bidsText}}</span>
+<span aria-hidden="true" style="color: #A9B2BD">·</span>
+<template data-sc="if" value="{{item.reserveMet}}" hint-placeholder-val="{{true}}">
+<span style="display: inline-flex; align-items: center; gap: 4px; font-weight: 600; color: #14202E">
+<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5 9-10"></path></svg>Reserve met</span>
+</template>
+<template data-sc="if" value="{{item.reserveNot}}" hint-placeholder-val="{{false}}">
+<span style="color: #5A6675">Reserve not met</span>
+</template>
+</span>
+<span style="font-size: 13px; color: #3D4A5A; margin-top: 4px">Price per key <strong style="color: #14202E; font-weight: 600">{{item.ppkText}}</strong></span>
+</div>
+</div>
+</article>
+</template>
+</div>
+
+<nav aria-label="Pagination" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; padding: 8px 0 24px">
+<span style="font-size: 14px; color: #5A6675">Showing 1–8 of 42</span>
+<div style="display: flex; align-items: center; gap: 4px; flex-wrap: wrap">
+<a href="#" aria-disabled="true" style="height: 40px; padding: 0 12px; display: inline-flex; align-items: center; gap: 4px; border-radius: 8px; color: #8A94A1; text-decoration: none; font-size: 14px; font-weight: 500">
+<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 18-6-6 6-6"></path></svg>Previous</a>
+<a href="#" aria-current="page" style="width: 40px; height: 40px; display: inline-flex; align-items: center; justify-content: center; border-radius: 8px; background: #0F2A44; color: #FFFFFF; text-decoration: none; font-size: 14px; font-weight: 600">1</a>
+<a href="#" style="width: 40px; height: 40px; display: inline-flex; align-items: center; justify-content: center; border-radius: 8px; border: 1px solid #DDE2E8; background: #FFFFFF; color: #14202E; text-decoration: none; font-size: 14px; font-weight: 500; box-sizing: border-box">2</a>
+<a href="#" style="width: 40px; height: 40px; display: inline-flex; align-items: center; justify-content: center; border-radius: 8px; border: 1px solid #DDE2E8; background: #FFFFFF; color: #14202E; text-decoration: none; font-size: 14px; font-weight: 500; box-sizing: border-box">3</a>
+<span aria-hidden="true" style="width: 28px; text-align: center; color: #8A94A1">…</span>
+<a href="#" style="width: 40px; height: 40px; display: inline-flex; align-items: center; justify-content: center; border-radius: 8px; border: 1px solid #DDE2E8; background: #FFFFFF; color: #14202E; text-decoration: none; font-size: 14px; font-weight: 500; box-sizing: border-box">6</a>
+<a href="#" style="height: 40px; padding: 0 12px; display: inline-flex; align-items: center; gap: 4px; border-radius: 8px; color: #0F2A44; text-decoration: none; font-size: 14px; font-weight: 600">Next
+<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"></path></svg></a>
+</div>
+</nav>
+</div>
+
+<!-- Map -->
+<template data-sc="if" value="{{showMap}}" hint-placeholder-val="{{true}}">
+<div class="map-col" style="flex: 1 1 380px; min-width: 0; height: 860px; border-radius: 12px; border: 1px solid #D5DAE1; overflow: hidden; background-color: #E4E8EC; background-image: linear-gradient(#D9DEE4 1px, transparent 1px), linear-gradient(90deg, #D9DEE4 1px, transparent 1px); background-size: 64px 64px">
+<div style="position: relative; width: 100%; height: 100%">
+<svg width="100%" height="100%" viewBox="0 0 400 860" preserveAspectRatio="none" aria-hidden="true" style="position: absolute; inset: 0">
+<path d="M0 640 C 90 610, 150 700, 260 660 S 380 700, 400 690 L 400 860 L 0 860 Z" fill="#CFD9E3"></path>
+<path d="M-10 300 C 80 320, 140 260, 220 290 S 340 250, 410 280" fill="none" stroke="#F4F6F8" stroke-width="6"></path>
+<path d="M120 -10 C 140 200, 100 400, 160 600 S 180 760, 170 870" fill="none" stroke="#F4F6F8" stroke-width="6"></path>
+<path d="M-10 480 L 410 440" fill="none" stroke="#F4F6F8" stroke-width="4"></path>
+<path d="M300 -10 C 280 180, 330 420, 290 870" fill="none" stroke="#F4F6F8" stroke-width="4"></path>
+</svg>
+
+<template data-sc="for" list="{{pins}}" as="pin" hint-placeholder-count="8">
+<button type="button" aria-label="{{pin.aria}}" onMouseEnter="{{pin.enter}}" onMouseLeave="{{pin.leave}}" onFocus="{{pin.enter}}" onBlur="{{pin.leave}}" style="position: absolute; left: {{pin.left}}; top: {{pin.top}}; z-index: {{pin.z}}; transform: translate(-50%, -100%) scale({{pin.scale}}); transform-origin: 50% 100%; transition: transform .15s; background: transparent; border: 0; padding: 0 0 8px; cursor: pointer">
+<span style="position: relative; display: inline-flex; align-items: center; height: 30px; padding: 0 10px; border-radius: 999px; font-size: 13px; font-weight: 700; white-space: nowrap; font-variant-numeric: tabular-nums; box-shadow: 0 2px 6px rgba(15,42,68,0.25); background: {{pin.bg}}; color: {{pin.fg}}; border: 1px solid {{pin.borderColor}}">{{pin.label}}</span>
+<span aria-hidden="true" style="position: absolute; left: 50%; bottom: 3px; width: 10px; height: 10px; margin-left: -5px; transform: rotate(45deg); background: {{pin.bg}}; border-right: 1px solid {{pin.borderColor}}; border-bottom: 1px solid {{pin.borderColor}}"></span>
+</button>
+</template>
+
+<div style="position: absolute; top: 12px; left: 12px; right: 64px; display: flex">
+<label style="display: inline-flex; align-items: center; gap: 8px; min-height: 40px; padding: 0 12px; background: #FFFFFF; border-radius: 8px; box-shadow: 0 1px 4px rgba(15,42,68,0.18); font-size: 13px; font-weight: 500; color: #14202E; cursor: pointer">
+<input type="checkbox" checked="{{moveSearch}}" onChange="{{toggleMoveSearch}}" style="width: 16px; height: 16px; margin: 0; accent-color: #0F2A44">
+Search as I move the map
+</label>
+</div>
+<div style="position: absolute; top: 12px; right: 12px; display: flex; flex-direction: column; background: #FFFFFF; border-radius: 8px; box-shadow: 0 1px 4px rgba(15,42,68,0.18); overflow: hidden">
+<button type="button" aria-label="Zoom in" style="width: 40px; height: 40px; border: 0; border-bottom: 1px solid #E3E6EB; background: #FFFFFF; color: #14202E; cursor: pointer; display: flex; align-items: center; justify-content: center">
+<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg></button>
+<button type="button" aria-label="Zoom out" style="width: 40px; height: 40px; border: 0; background: #FFFFFF; color: #14202E; cursor: pointer; display: flex; align-items: center; justify-content: center">
+<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14"></path></svg></button>
+</div>
+<span style="position: absolute; left: 12px; bottom: 10px; font-size: 11px; color: #5A6675; background: rgba(255,255,255,0.85); padding: 2px 6px; border-radius: 4px">Map placeholder</span>
+</div>
+</div>
+</template>
+</div>
+</section>
+</main>
+
+<footer style="background: #FFFFFF; border-top: 1px solid #E3E6EB; padding: 32px 24px">
+<div style="max-width: 1600px; margin: 0 auto; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px">
+<span style="font-size: 14px; color: #5A6675">© 2026 [Your brand]. All rights reserved.</span>
+<nav aria-label="Footer" style="display: flex; flex-wrap: wrap; gap: 4px 8px">
+<a href="#" style="color: #3D4A5A; text-decoration: none; font-size: 14px; padding: 10px 8px">Auction rules</a>
+<a href="#" style="color: #3D4A5A; text-decoration: none; font-size: 14px; padding: 10px 8px">FAQ</a>
+<a href="#" style="color: #3D4A5A; text-decoration: none; font-size: 14px; padding: 10px 8px">Terms</a>
+<a href="#" style="color: #3D4A5A; text-decoration: none; font-size: 14px; padding: 10px 8px">Privacy</a>
+<a href="#" style="color: #3D4A5A; text-decoration: none; font-size: 14px; padding: 10px 8px">Contact</a>
+</nav>
+</div>
+</footer>
+</div>
+</template>
+<div id="dc-root"></div>
+<script src="runtime.js"></script>
+<script>
+class Component extends DCLogic {
+  renderVals() {
+    var self = this;
+    var s = this.state || {};
+    var D = {
+      sort: 'ending', view: 'map', hovered: null, watched: {}, sheet: false, moveSearch: true,
+      types: { 'Limited-service': true, 'Motel': true },
+      franchise: 'either',
+      statuses: { Live: true },
+      reserves: {},
+      priceMin: 500000, priceMax: 10000000
+    };
+    function g(k) { return s[k] === undefined ? D[k] : s[k]; }
+    function set(o) { self.setState(o); }
+
+    function money(v) { return '$' + Math.round(v).toLocaleString('en-US'); }
+    function short(v) {
+      if (v >= 25000000) return '$25M+';
+      if (v >= 1000000) { var m = Math.floor(v / 100000) / 10; return '$' + (m % 1 === 0 ? m.toFixed(0) : m.toFixed(1)) + 'M'; }
+      if (v === 0) return '$0';
+      return '$' + Math.round(v / 1000) + 'K';
+    }
+
+    var data = [
+      { id: 'hampton', name: 'Hampton Inn Eau Claire', city: 'Eau Claire, WI', type: 'Limited-service', keys: 64, built: 2004, flag: 'Hampton Inn flag', occ: 71, adr: 112, cap: 9.4, bid: 4250000, bids: 18, reserveMet: true, endsMin: 134, ends: 'Ends in 2h 14m', listed: 12, x: 61, y: 22 },
+      { id: 'riverbend', name: 'Riverbend Motor Lodge', city: 'Branson, MO', type: 'Motel', keys: 38, built: 1978, flag: 'Independent', occ: 64, adr: 79, cap: 11.2, bid: 1180000, bids: 11, reserveMet: false, endsMin: 340, ends: 'Ends in 5h 40m', listed: 9, x: 38, y: 58 },
+      { id: 'cedar', name: 'Cedar Pines Motel', city: 'Wisconsin Dells, WI', type: 'Motel', keys: 31, built: 1972, flag: 'Independent', occ: 59, adr: 92, cap: 12.1, bid: 865000, bids: 14, reserveMet: true, endsMin: 495, ends: 'Ends in 8h 15m', listed: 15, x: 56, y: 28 },
+      { id: 'comfort', name: 'Comfort Inn Rochester', city: 'Rochester, MN', type: 'Limited-service', keys: 86, built: 1998, flag: 'Comfort Inn flag', occ: 74, adr: 104, cap: 9.8, bid: 3620000, bids: 16, reserveMet: true, endsMin: 1192, ends: 'Ends in 19h 52m', listed: 11, x: 44, y: 18 },
+      { id: 'daysinn', name: 'Days Inn Rapid City', city: 'Rapid City, SD', type: 'Limited-service', keys: 79, built: 1996, flag: 'Days Inn flag', occ: 58, adr: 88, cap: 10.6, bid: 2640000, bids: 3, reserveMet: false, endsMin: 9500, ends: 'Ends Oct 30', listed: 2, x: 14, y: 20 },
+      { id: 'prairie', name: 'Prairie Rose Inn', city: 'Hays, KS', type: 'Motel', keys: 44, built: 1983, flag: 'Independent', occ: 62, adr: 71, cap: 10.9, bid: 1320000, bids: 7, reserveMet: false, endsMin: 11200, ends: 'Ends Oct 31', listed: 4, x: 22, y: 52 },
+      { id: 'quality', name: 'Quality Inn Joplin', city: 'Joplin, MO', type: 'Limited-service', keys: 92, built: 1989, flag: 'Quality Inn flag', occ: 66, adr: 83, cap: 9.2, bid: 2980000, bids: 6, reserveMet: true, endsMin: 13800, ends: 'Ends Nov 1', listed: 3, x: 30, y: 64 },
+      { id: 'northwoods', name: 'Northwoods Inn & Suites', city: 'Minocqua, WI', type: 'Motel', keys: 28, built: 1985, flag: 'Independent', occ: 55, adr: 96, cap: 12.4, bid: 980000, bids: 4, reserveMet: false, endsMin: 17200, ends: 'Ends Nov 4', listed: 1, x: 58, y: 9 }
+    ];
+
+    var sort = g('sort');
+    var sorted = data.slice().sort(function (a, b) {
+      if (sort === 'newest') return a.listed - b.listed;
+      if (sort === 'price') return a.bid - b.bid;
+      if (sort === 'cap') return b.cap - a.cap;
+      if (sort === 'ppk') return (a.bid / a.keys) - (b.bid / b.keys);
+      return a.endsMin - b.endsMin;
+    });
+
+    var hovered = g('hovered');
+    var watched = g('watched');
+    function enter(id) { return function () { set({ hovered: id }); }; }
+    function leave() { set({ hovered: null }); }
+
+    var cards = sorted.map(function (l) {
+      var on = !!watched[l.id];
+      var hot = hovered === l.id;
+      return {
+        name: l.name, city: l.city, type: l.type,
+        meta: l.keys + ' keys · Built ' + l.built + ' · ' + l.flag,
+        occText: l.occ + '%', adrText: '$' + l.adr, capText: l.cap.toFixed(1) + '%',
+        bidText: money(l.bid), bidsText: l.bids + ' bids',
+        ppkText: money(Math.round(l.bid / l.keys / 100) * 100),
+        reserveMet: l.reserveMet, reserveNot: !l.reserveMet,
+        soon: l.endsMin < 1440, later: l.endsMin >= 1440, ends: l.ends,
+        border: hot ? '#0F2A44' : '#E3E6EB',
+        shadow: hot ? '0 0 0 1px #0F2A44, 0 8px 20px rgba(15,42,68,0.12)' : 'none',
+        watched: on,
+        heartFill: on ? '#0F2A44' : 'none',
+        heartStroke: on ? '#0F2A44' : '#3D4A5A',
+        heartLabel: (on ? 'Remove ' : 'Save ') + l.name + (on ? ' from watchlist' : ' to watchlist'),
+        toggle: function () { var n = Object.assign({}, watched); n[l.id] = !on; set({ watched: n }); },
+        enter: enter(l.id), leave: leave
+      };
+    });
+
+    var pins = data.map(function (l) {
+      var hot = hovered === l.id;
+      return {
+        label: short(l.bid), aria: l.name + ', current bid ' + money(l.bid),
+        left: l.x + '%', top: (l.y + 8) + '%',
+        z: hot ? 20 : 2, scale: hot ? 1.12 : 1,
+        bg: hot ? '#0F2A44' : '#FFFFFF', fg: hot ? '#FFFFFF' : '#0F2A44', borderColor: hot ? '#0F2A44' : '#C5CDD6',
+        enter: enter(l.id), leave: leave
+      };
+    });
+
+    var typesOn = g('types');
+    var typeCounts = { 'Limited-service': 14, 'Full-service': 3, 'Boutique': 2, 'Motel': 21, 'Extended-stay': 1, 'Resort': 1 };
+    var types = Object.keys(typeCounts).map(function (k) {
+      return { label: k, count: typeCounts[k], checked: !!typesOn[k], toggle: function () { var n = Object.assign({}, typesOn); n[k] = !typesOn[k]; set({ types: n }); } };
+    });
+
+    var fr = g('franchise');
+    var franchise = [['branded', 'Branded'], ['independent', 'Independent'], ['either', 'Either']].map(function (p) {
+      var on = fr === p[0];
+      return { label: p[1], checked: on, bg: on ? '#0F2A44' : '#FFFFFF', fg: on ? '#FFFFFF' : '#14202E', weight: on ? 600 : 500, pick: function () { set({ franchise: p[0] }); } };
+    });
+
+    var stOn = g('statuses');
+    var stCounts = { Live: 42, Upcoming: 17, Ended: 186 };
+    var statuses = Object.keys(stCounts).map(function (k) {
+      return { label: k, count: stCounts[k], checked: !!stOn[k], toggle: function () { var n = Object.assign({}, stOn); n[k] = !stOn[k]; set({ statuses: n }); } };
+    });
+
+    var rvOn = g('reserves');
+    var reserves = ['Has reserve', 'No reserve'].map(function (k) {
+      return { label: k, checked: !!rvOn[k], toggle: function () { var n = Object.assign({}, rvOn); n[k] = !rvOn[k]; set({ reserves: n }); } };
+    });
+
+    var pMin = g('priceMin'), pMax = g('priceMax'), MAX = 25000000;
+
+    var view = g('view');
+    var views = [['list', 'List'], ['map', 'Map']].map(function (p) {
+      var on = view === p[0];
+      return { label: p[1], selected: on, bg: on ? '#0F2A44' : '#FFFFFF', fg: on ? '#FFFFFF' : '#14202E', weight: on ? 600 : 500, pick: function () { set({ view: p[0] }); } };
+    });
+
+    var active = 0;
+    Object.keys(typesOn).forEach(function (k) { if (typesOn[k]) active++; });
+    Object.keys(stOn).forEach(function (k) { if (stOn[k]) active++; });
+    Object.keys(rvOn).forEach(function (k) { if (rvOn[k]) active++; });
+    if (fr !== 'either') active++;
+    if (pMin > 0 || pMax < MAX) active++;
+
+    return {
+      cards: cards, pins: pins, types: types, franchise: franchise, statuses: statuses, reserves: reserves, views: views,
+      showMap: view === 'map',
+      sort: sort,
+      onSort: function (e) { set({ sort: e.target.value }); },
+      priceMin: pMin, priceMax: pMax,
+      priceMinText: money(pMin), priceMaxText: pMax >= MAX ? '$25,000,000 or more' : money(pMax),
+      priceText: short(pMin) + ' – ' + short(pMax),
+      fillLeft: (pMin / MAX * 100) + '%', fillWidth: ((pMax - pMin) / MAX * 100) + '%',
+      onPriceMin: function (e) { set({ priceMin: Math.min(Number(e.target.value), pMax - 250000) }); },
+      onPriceMax: function (e) { set({ priceMax: Math.max(Number(e.target.value), pMin + 250000) }); },
+      moveSearch: g('moveSearch'),
+      toggleMoveSearch: function () { set({ moveSearch: !g('moveSearch') }); },
+      activeCount: active,
+      sheetClass: g('sheet') ? 'open' : '',
+      openSheet: function () { set({ sheet: true }); },
+      closeSheet: function () { set({ sheet: false }); },
+      clearAll: function () { set({ types: {}, statuses: {}, reserves: {}, franchise: 'either', priceMin: 0, priceMax: MAX }); }
+    };
+  }
+}
+DC.mount(Component, {});
+</script>
+</body>
+</html>

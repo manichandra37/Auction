@@ -1,0 +1,347 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Home – hotel auctions</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap">
+<style>
+body{margin:0;background:#F6F7F9}
+a{color:#0F2A44}a:hover{color:#1B4470}
+.site-nav{display:flex}
+.menu-btn{display:none}
+@media (max-width: 920px){.site-nav{display:none}.menu-btn{display:inline-flex}.signin{display:none}}
+input::placeholder{color:#6B7684}
+</style>
+<style>
+#dc-root div[style*="overflow-x: auto"]{position:relative}
+@media (max-width:860px){aside{min-width:0}}
+@media (max-width:520px){
+header > div{gap:12px !important;padding-left:16px !important;padding-right:16px !important}
+header a[style*="padding: 0 18px; height: 44px"]{padding:0 12px !important}
+}
+</style>
+
+</head>
+<body>
+<template id="dc-tpl">
+<div style="font-family: 'Inter', system-ui, sans-serif; color: #14202E; background: #F6F7F9; font-variant-numeric: tabular-nums; min-height: 100vh">
+
+<!-- Header -->
+<header style="background: #0F2A44; border-bottom: 1px solid rgba(255,255,255,0.08)">
+<div style="max-width: 1280px; margin: 0 auto; padding: 0 24px; height: 72px; display: flex; align-items: center; gap: 32px">
+<a href="#" style="display: flex; align-items: center; gap: 10px; text-decoration: none; color: #FFFFFF; flex-shrink: 0">
+<span style="width: 32px; height: 32px; border-radius: 8px; background: #FFFFFF; display: inline-flex; align-items: center; justify-content: center">
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0F2A44" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 21V7l8-4 8 4v14"></path><path d="M9 21v-5h6v5"></path><path d="M9 10h.01M15 10h.01"></path></svg>
+</span>
+<span style="font-size: 18px; font-weight: 700; letter-spacing: -0.01em">[Your brand]</span>
+</a>
+<nav class="site-nav" aria-label="Main" style="align-items: center; gap: 4px; flex: 1 1 auto">
+<a href="search.html" style="color: #FFFFFF; text-decoration: none; font-size: 15px; font-weight: 500; padding: 12px 14px; border-radius: 8px">Buy hotels</a>
+<a href="sell-financials.html" style="color: #D3DDE8; text-decoration: none; font-size: 15px; font-weight: 500; padding: 12px 14px; border-radius: 8px">Sell a hotel</a>
+<a href="#how" style="color: #D3DDE8; text-decoration: none; font-size: 15px; font-weight: 500; padding: 12px 14px; border-radius: 8px">How it works</a>
+<a href="my-bids.html" style="color: #D3DDE8; text-decoration: none; font-size: 15px; font-weight: 500; padding: 12px 14px; border-radius: 8px">My bids</a>
+</nav>
+<div style="display: flex; align-items: center; gap: 8px; margin-left: auto">
+<a href="my-bids.html" class="signin" style="color: #FFFFFF; text-decoration: none; font-size: 15px; font-weight: 500; padding: 12px 14px">Sign in</a>
+<a href="sell-financials.html" style="background: #FFFFFF; color: #0F2A44; text-decoration: none; font-size: 15px; font-weight: 600; padding: 0 18px; height: 44px; display: inline-flex; align-items: center; border-radius: 8px; white-space: nowrap">List your hotel</a>
+<button type="button" class="menu-btn" aria-label="Open menu" style="width: 44px; height: 44px; align-items: center; justify-content: center; background: transparent; border: 1px solid rgba(255,255,255,0.3); border-radius: 8px; color: #FFFFFF; cursor: pointer">
+<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"></path></svg>
+</button>
+</div>
+</div>
+</header>
+
+<main>
+<!-- Hero -->
+<section style="background: #0F2A44; padding: 72px 24px 88px">
+<div style="max-width: 1080px; margin: 0 auto; display: flex; flex-direction: column; gap: 32px">
+<div style="display: flex; flex-direction: column; gap: 16px; max-width: 760px">
+<h1 style="margin: 0; color: #FFFFFF; font-size: clamp(34px, 4.4vw, 56px); line-height: 1.08; font-weight: 700; letter-spacing: -0.025em">Buy and sell hotels at online auction</h1>
+<p style="margin: 0; color: #C9D6E3; font-size: 19px; line-height: 1.5">Verified listings, real financials, transparent live bidding.</p>
+</div>
+
+<form role="search" aria-label="Search hotel auctions" style="background: #FFFFFF; border-radius: 12px; padding: 12px; display: flex; flex-wrap: wrap; gap: 8px; align-items: flex-end; box-shadow: 0 12px 32px rgba(5,18,32,0.28)">
+<div style="flex: 2 1 240px; display: flex; flex-direction: column; gap: 6px; padding: 6px 8px">
+<label for="loc" style="font-size: 12px; font-weight: 600; color: #4A5666; letter-spacing: 0.02em">Location</label>
+<input id="loc" type="text" placeholder="City, state or market" style="height: 44px; border: 1px solid #D5DAE1; border-radius: 8px; padding: 0 12px; font: inherit; font-size: 15px; color: #14202E; background: #FFFFFF; min-width: 0">
+</div>
+<div style="flex: 2 1 200px; display: flex; flex-direction: column; gap: 6px; padding: 6px 8px">
+<label for="type" style="font-size: 12px; font-weight: 600; color: #4A5666; letter-spacing: 0.02em">Hotel type</label>
+<select id="type" style="height: 44px; border: 1px solid #D5DAE1; border-radius: 8px; padding: 0 10px; font: inherit; font-size: 15px; color: #14202E; background: #FFFFFF">
+<option>All types</option>
+<option>Limited-service</option>
+<option>Full-service</option>
+<option>Boutique</option>
+<option>Motel</option>
+<option>Extended-stay</option>
+<option>Resort</option>
+</select>
+</div>
+<div style="flex: 2 1 200px; display: flex; flex-direction: column; gap: 6px; padding: 6px 8px">
+<label for="price" style="font-size: 12px; font-weight: 600; color: #4A5666; letter-spacing: 0.02em">Price range</label>
+<select id="price" style="height: 44px; border: 1px solid #D5DAE1; border-radius: 8px; padding: 0 10px; font: inherit; font-size: 15px; color: #14202E; background: #FFFFFF">
+<option>Any price</option>
+<option>Under $1M</option>
+<option>$1M – $3M</option>
+<option>$3M – $10M</option>
+<option>$10M – $25M</option>
+<option>$25M+</option>
+</select>
+</div>
+<div style="flex: 1 0 140px; padding: 6px 8px">
+<a href="search.html" style="width: 100%; box-sizing: border-box; height: 44px; background: #1F7A4D; color: #FFFFFF; text-decoration: none; border-radius: 8px; font-size: 15px; font-weight: 600; display: inline-flex; align-items: center; justify-content: center; gap: 8px">
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.5-3.5"></path></svg>
+Search
+</a>
+</div>
+</form>
+
+<div style="display: flex; flex-wrap: wrap; gap: 8px; align-items: center">
+<span style="color: #C9D6E3; font-size: 14px; margin-right: 4px">Quick filters:</span>
+<template data-sc="for" list="{{chips}}" as="chip" hint-placeholder-count="5">
+<template data-sc="if" value="{{chip.on}}" hint-placeholder-val="{{false}}">
+<button type="button" aria-pressed="true" onClick="{{chip.toggle}}" style="height: 40px; padding: 0 16px; border-radius: 999px; border: 1px solid #FFFFFF; background: #FFFFFF; color: #0F2A44; font: inherit; font-size: 14px; font-weight: 600; cursor: pointer">{{chip.label}}</button>
+</template>
+<template data-sc="if" value="{{chip.off}}" hint-placeholder-val="{{true}}">
+<button type="button" aria-pressed="false" onClick="{{chip.toggle}}" style="height: 40px; padding: 0 16px; border-radius: 999px; border: 1px solid rgba(255,255,255,0.4); background: transparent; color: #FFFFFF; font: inherit; font-size: 14px; font-weight: 500; cursor: pointer">{{chip.label}}</button>
+</template>
+</template>
+</div>
+</div>
+</section>
+
+<!-- Live auctions -->
+<section style="padding: 64px 24px 24px">
+<div style="max-width: 1280px; margin: 0 auto; display: flex; flex-direction: column; gap: 24px">
+<div style="display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 16px">
+<div style="display: flex; flex-direction: column; gap: 6px">
+<h2 style="margin: 0; font-size: 30px; font-weight: 700; letter-spacing: -0.02em; color: #0F2A44">Live hotel auctions</h2>
+<p style="margin: 0; font-size: 15px; color: #5A6675">37 properties open for bidding right now</p>
+</div>
+<a href="search.html" style="font-size: 15px; font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; padding: 10px 0">View all auctions
+<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
+</a>
+</div>
+
+<div style="display: flex; gap: 4px; border-bottom: 1px solid #DDE2E8; overflow-x: auto">
+<template data-sc="for" list="{{tabs}}" as="tab" hint-placeholder-count="3">
+<template data-sc="if" value="{{tab.selected}}" hint-placeholder-val="{{false}}">
+<button type="button" aria-pressed="true" onClick="{{tab.pick}}" style="height: 48px; padding: 0 16px; background: transparent; border: 0; border-bottom: 2px solid #0F2A44; margin-bottom: -1px; color: #0F2A44; font: inherit; font-size: 15px; font-weight: 600; cursor: pointer; white-space: nowrap">{{tab.label}}</button>
+</template>
+<template data-sc="if" value="{{tab.unselected}}" hint-placeholder-val="{{true}}">
+<button type="button" aria-pressed="false" onClick="{{tab.pick}}" style="height: 48px; padding: 0 16px; background: transparent; border: 0; border-bottom: 2px solid transparent; margin-bottom: -1px; color: #5A6675; font: inherit; font-size: 15px; font-weight: 500; cursor: pointer; white-space: nowrap">{{tab.label}}</button>
+</template>
+</template>
+</div>
+
+<div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 272px), 1fr)); gap: 20px">
+<template data-sc="for" list="{{cards}}" as="item" hint-placeholder-count="4">
+<article style="background: #FFFFFF; border: 1px solid #E3E6EB; border-radius: 12px; overflow: hidden; display: flex; flex-direction: column">
+<div style="position: relative; aspect-ratio: 4 / 3; background: #DFE3E8; display: flex; align-items: center; justify-content: center">
+<svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#A9B2BD" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"></rect><circle cx="9" cy="10" r="1.6"></circle><path d="m21 16-5-5-8 8"></path></svg>
+<div style="position: absolute; top: 12px; left: 12px; display: flex; gap: 6px">
+<template data-sc="if" value="{{item.soon}}" hint-placeholder-val="{{true}}">
+<span style="display: inline-flex; align-items: center; gap: 5px; height: 26px; padding: 0 10px; border-radius: 999px; background: #FDF0D5; color: #7A4A00; font-size: 12px; font-weight: 600; border: 1px solid #F2D49B">
+<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 2"></path></svg>
+{{item.ends}}</span>
+</template>
+<template data-sc="if" value="{{item.later}}" hint-placeholder-val="{{false}}">
+<span style="display: inline-flex; align-items: center; gap: 5px; height: 26px; padding: 0 10px; border-radius: 999px; background: #FFFFFF; color: #3D4A5A; font-size: 12px; font-weight: 600; border: 1px solid #DDE2E8">
+<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 2"></path></svg>
+{{item.ends}}</span>
+</template>
+</div>
+<span style="position: absolute; left: 12px; bottom: 12px; height: 26px; padding: 0 10px; display: inline-flex; align-items: center; border-radius: 6px; background: #0F2A44; color: #FFFFFF; font-size: 12px; font-weight: 600">{{item.type}}</span>
+<template data-sc="if" value="{{item.watched}}" hint-placeholder-val="{{false}}">
+<button type="button" aria-pressed="true" aria-label="{{item.heartLabel}}" onClick="{{item.toggle}}" style="position: absolute; top: 6px; right: 6px; width: 44px; height: 44px; border-radius: 999px; border: 0; background: transparent; display: flex; align-items: center; justify-content: center; cursor: pointer">
+<span style="width: 34px; height: 34px; border-radius: 999px; background: #FFFFFF; display: flex; align-items: center; justify-content: center; box-shadow: 0 1px 3px rgba(15,42,68,0.2)">
+<svg width="18" height="18" viewBox="0 0 24 24" fill="#C8372D" stroke="#C8372D" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M12 20s-7-4.4-9.2-9A4.8 4.8 0 0 1 12 6.3 4.8 4.8 0 0 1 21.2 11C19 15.6 12 20 12 20z"></path></svg>
+</span>
+</button>
+</template>
+<template data-sc="if" value="{{item.notWatched}}" hint-placeholder-val="{{true}}">
+<button type="button" aria-pressed="false" aria-label="{{item.heartLabel}}" onClick="{{item.toggle}}" style="position: absolute; top: 6px; right: 6px; width: 44px; height: 44px; border-radius: 999px; border: 0; background: transparent; display: flex; align-items: center; justify-content: center; cursor: pointer">
+<span style="width: 34px; height: 34px; border-radius: 999px; background: #FFFFFF; display: flex; align-items: center; justify-content: center; box-shadow: 0 1px 3px rgba(15,42,68,0.2)">
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#3D4A5A" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M12 20s-7-4.4-9.2-9A4.8 4.8 0 0 1 12 6.3 4.8 4.8 0 0 1 21.2 11C19 15.6 12 20 12 20z"></path></svg>
+</span>
+</button>
+</template>
+</div>
+
+<div style="padding: 16px 18px 18px; display: flex; flex-direction: column; gap: 12px; flex: 1 1 auto">
+<div style="display: flex; flex-direction: column; gap: 4px">
+<h3 style="margin: 0; font-size: 17px; font-weight: 600; line-height: 1.3"><a href="listing.html" style="color: #14202E; text-decoration: none">{{item.name}}</a></h3>
+<p style="margin: 0; font-size: 14px; color: #5A6675">{{item.city}}</p>
+</div>
+<p style="margin: 0; font-size: 13px; color: #3D4A5A">{{item.meta}}</p>
+<dl style="margin: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; background: #F6F7F9; border-radius: 8px; padding: 10px 12px">
+<div style="display: flex; flex-direction: column; gap: 2px">
+<dt style="font-size: 11px; color: #5A6675; font-weight: 500">Occupancy</dt>
+<dd style="margin: 0; font-size: 15px; font-weight: 600; color: #14202E; font-variant-numeric: tabular-nums">{{item.occ}}</dd>
+</div>
+<div style="display: flex; flex-direction: column; gap: 2px">
+<dt style="font-size: 11px; color: #5A6675; font-weight: 500">ADR</dt>
+<dd style="margin: 0; font-size: 15px; font-weight: 600; color: #14202E; font-variant-numeric: tabular-nums">{{item.adr}}</dd>
+</div>
+<div style="display: flex; flex-direction: column; gap: 2px">
+<dt style="font-size: 11px; color: #5A6675; font-weight: 500">Cap rate</dt>
+<dd style="margin: 0; font-size: 15px; font-weight: 600; color: #14202E; font-variant-numeric: tabular-nums">{{item.cap}}</dd>
+</div>
+</dl>
+<div style="border-top: 1px solid #E9ECF0; padding-top: 12px; margin-top: auto; display: flex; flex-direction: column; gap: 2px">
+<span style="font-size: 12px; color: #5A6675; font-weight: 500">Current bid</span>
+<span style="font-size: 26px; font-weight: 700; color: #0F2A44; letter-spacing: -0.02em; font-variant-numeric: tabular-nums">{{item.bid}}</span>
+<span style="font-size: 13px; color: #3D4A5A; display: flex; align-items: center; gap: 6px; flex-wrap: wrap">
+<span style="font-variant-numeric: tabular-nums">{{item.bids}}</span>
+<span aria-hidden="true" style="color: #A9B2BD">·</span>
+<template data-sc="if" value="{{item.reserveMet}}" hint-placeholder-val="{{true}}">
+<span style="display: inline-flex; align-items: center; gap: 4px; font-weight: 600; color: #14202E">
+<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5 9-10"></path></svg>Reserve met</span>
+</template>
+<template data-sc="if" value="{{item.reserveNot}}" hint-placeholder-val="{{false}}">
+<span style="color: #5A6675">Reserve not met</span>
+</template>
+</span>
+</div>
+</div>
+</article>
+</template>
+</div>
+</div>
+</section>
+
+<!-- How it works -->
+<section id="how" style="padding: 56px 24px 72px">
+<div style="max-width: 1280px; margin: 0 auto; display: flex; flex-direction: column; gap: 24px">
+<div style="display: flex; flex-direction: column; gap: 6px">
+<h2 style="margin: 0; font-size: 30px; font-weight: 700; letter-spacing: -0.02em; color: #0F2A44">How it works</h2>
+<p style="margin: 0; font-size: 15px; color: #5A6675">Every bidder is verified before the first bid. Every listing comes with its numbers.</p>
+</div>
+<ol style="list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 20px">
+<li style="background: #FFFFFF; border: 1px solid #E3E6EB; border-radius: 12px; padding: 28px; display: flex; flex-direction: column; gap: 14px">
+<span style="width: 40px; height: 40px; border-radius: 999px; border: 1.5px solid #0F2A44; color: #0F2A44; display: inline-flex; align-items: center; justify-content: center; font-size: 16px; font-weight: 700">1</span>
+<h3 style="margin: 0; font-size: 19px; font-weight: 600; color: #14202E">Sign NDA and verify funds</h3>
+<p style="margin: 0; font-size: 15px; line-height: 1.55; color: #4A5666">Create an account, sign a one-time NDA, and upload proof of funds or a lender letter. Verification usually takes one business day.</p>
+</li>
+<li style="background: #FFFFFF; border: 1px solid #E3E6EB; border-radius: 12px; padding: 28px; display: flex; flex-direction: column; gap: 14px">
+<span style="width: 40px; height: 40px; border-radius: 999px; border: 1.5px solid #0F2A44; color: #0F2A44; display: inline-flex; align-items: center; justify-content: center; font-size: 16px; font-weight: 700">2</span>
+<h3 style="margin: 0; font-size: 19px; font-weight: 600; color: #14202E">Review financials and bid</h3>
+<p style="margin: 0; font-size: 15px; line-height: 1.55; color: #4A5666">Open the data room for the trailing-12 P&amp;L, STR reports, franchise agreement and PIP. Bid live, or set a maximum and let proxy bidding work for you.</p>
+</li>
+<li style="background: #FFFFFF; border: 1px solid #E3E6EB; border-radius: 12px; padding: 28px; display: flex; flex-direction: column; gap: 14px">
+<span style="width: 40px; height: 40px; border-radius: 999px; border: 1.5px solid #0F2A44; color: #0F2A44; display: inline-flex; align-items: center; justify-content: center; font-size: 16px; font-weight: 700">3</span>
+<h3 style="margin: 0; font-size: 19px; font-weight: 600; color: #14202E">Win, then close with escrow</h3>
+<p style="margin: 0; font-size: 15px; line-height: 1.55; color: #4A5666">The winning bidder signs the purchase agreement and wires the deposit to a licensed escrow agent. A typical close takes 30 to 45 days.</p>
+</li>
+</ol>
+</div>
+</section>
+
+<!-- Seller band -->
+<section style="background: #E6EEF6; padding: 56px 24px">
+<div style="max-width: 1280px; margin: 0 auto; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 24px">
+<div style="display: flex; flex-direction: column; gap: 8px; max-width: 640px">
+<h2 style="margin: 0; font-size: 30px; font-weight: 700; letter-spacing: -0.02em; color: #0F2A44">Own a hotel? List it in minutes</h2>
+<p style="margin: 0; font-size: 16px; line-height: 1.5; color: #3D4A5A">Upload your T-12 and photos, set a reserve price, and reach verified buyers across the country.</p>
+</div>
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 16px">
+<a href="#" style="font-size: 15px; font-weight: 600; text-decoration: none; padding: 12px 4px">See seller fees</a>
+<a href="sell-financials.html" style="background: #0F2A44; color: #FFFFFF; text-decoration: none; font-size: 16px; font-weight: 600; padding: 0 24px; height: 48px; display: inline-flex; align-items: center; border-radius: 8px">List your hotel</a>
+</div>
+</div>
+</section>
+</main>
+
+<!-- Footer -->
+<footer style="background: #FFFFFF; border-top: 1px solid #E3E6EB; padding: 32px 24px">
+<div style="max-width: 1280px; margin: 0 auto; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px">
+<div style="display: flex; align-items: center; gap: 10px">
+<span style="width: 26px; height: 26px; border-radius: 6px; background: #0F2A44; display: inline-flex; align-items: center; justify-content: center">
+<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 21V7l8-4 8 4v14"></path><path d="M9 21v-5h6v5"></path></svg>
+</span>
+<span style="font-size: 14px; color: #5A6675">© 2026 [Your brand]. All rights reserved.</span>
+</div>
+<nav aria-label="Footer" style="display: flex; flex-wrap: wrap; gap: 4px 8px">
+<a href="#" style="color: #3D4A5A; text-decoration: none; font-size: 14px; padding: 10px 8px">Auction rules</a>
+<a href="#" style="color: #3D4A5A; text-decoration: none; font-size: 14px; padding: 10px 8px">FAQ</a>
+<a href="#" style="color: #3D4A5A; text-decoration: none; font-size: 14px; padding: 10px 8px">Terms</a>
+<a href="#" style="color: #3D4A5A; text-decoration: none; font-size: 14px; padding: 10px 8px">Privacy</a>
+<a href="#" style="color: #3D4A5A; text-decoration: none; font-size: 14px; padding: 10px 8px">Contact</a>
+</nav>
+</div>
+</footer>
+</div>
+</template>
+<div id="dc-root"></div>
+<script src="runtime.js"></script>
+<script>
+class Component extends DCLogic {
+  renderVals() {
+    var s = this.state || {};
+    var tab = s.tab || 'soon';
+    var watched = s.watched || {};
+    var chipsOn = s.chips || {};
+    var self = this;
+
+    var listings = {
+      hampton: { name: 'Hampton Inn Eau Claire', city: 'Eau Claire, WI', type: 'Limited-service', meta: '64 keys · Built 2004 · Hampton Inn flag', occ: '71%', adr: '$112', cap: '9.4%', bid: '$4,250,000', bids: '18 bids', reserveMet: true, soon: true, ends: 'Ends in 2h 14m' },
+      riverbend: { name: 'Riverbend Motor Lodge', city: 'Branson, MO', type: 'Motel', meta: '38 keys · Built 1978 · Independent', occ: '64%', adr: '$79', cap: '11.2%', bid: '$1,180,000', bids: '11 bids', reserveMet: false, soon: true, ends: 'Ends in 5h 40m' },
+      larkspur: { name: 'The Larkspur', city: 'Asheville, NC', type: 'Boutique', meta: '42 keys · Built 1926 · Independent', occ: '76%', adr: '$214', cap: '7.8%', bid: '$6,900,000', bids: '24 bids', reserveMet: true, soon: true, ends: 'Ends in 11h 03m' },
+      woodspring: { name: 'WoodSpring Suites Amarillo', city: 'Amarillo, TX', type: 'Extended-stay', meta: '122 keys · Built 2016 · WoodSpring flag', occ: '82%', adr: '$54', cap: '8.9%', bid: '$7,450,000', bids: '9 bids', reserveMet: true, soon: true, ends: 'Ends in 19h 52m' },
+      daysinn: { name: 'Days Inn Rapid City', city: 'Rapid City, SD', type: 'Limited-service', meta: '79 keys · Built 1996 · Days Inn flag', occ: '58%', adr: '$88', cap: '10.6%', bid: '$2,640,000', bids: '3 bids', reserveMet: false, soon: false, ends: 'Ends Oct 30' },
+      seabrook: { name: 'Seabrook Shores Resort', city: 'Gulf Shores, AL', type: 'Resort', meta: '156 keys · Built 1989 · Independent', occ: '69%', adr: '$189', cap: '8.1%', bid: '$18,750,000', bids: '2 bids', reserveMet: false, soon: false, ends: 'Ends Nov 2' },
+      holiday: { name: 'Holiday Inn Peoria Downtown', city: 'Peoria, IL', type: 'Full-service', meta: '210 keys · Built 1982 · Holiday Inn flag', occ: '61%', adr: '$118', cap: '9.1%', bid: '$9,800,000', bids: '5 bids', reserveMet: true, soon: false, ends: 'Ends Nov 3' },
+      northwoods: { name: 'Northwoods Inn & Suites', city: 'Minocqua, WI', type: 'Motel', meta: '28 keys · Built 1985 · Independent', occ: '55%', adr: '$96', cap: '12.4%', bid: '$980,000', bids: '4 bids', reserveMet: false, soon: false, ends: 'Ends Nov 4' }
+    };
+    var lists = {
+      soon: ['hampton', 'riverbend', 'larkspur', 'woodspring'],
+      fresh: ['northwoods', 'holiday', 'seabrook', 'daysinn'],
+      bids: ['larkspur', 'hampton', 'riverbend', 'woodspring']
+    };
+
+    var cards = lists[tab].map(function (id) {
+      var l = listings[id];
+      var on = !!watched[id];
+      return Object.assign({}, l, {
+        later: !l.soon,
+        reserveNot: !l.reserveMet,
+        watched: on,
+        notWatched: !on,
+        heartLabel: (on ? 'Remove ' : 'Save ') + l.name + (on ? ' from watchlist' : ' to watchlist'),
+        toggle: function () {
+          var next = Object.assign({}, watched);
+          next[id] = !on;
+          self.setState({ watched: next });
+        }
+      });
+    });
+
+    var tabs = [
+      { id: 'soon', label: 'Ending soon' },
+      { id: 'fresh', label: 'Newly listed' },
+      { id: 'bids', label: 'Most bids' }
+    ].map(function (t) {
+      return { label: t.label, selected: t.id === tab, unselected: t.id !== tab, pick: function () { self.setState({ tab: t.id }); } };
+    });
+
+    var chips = ['Ending this week', 'Independent (no franchise)', 'Under 50 keys', 'Under $3M', 'Cap rate 9%+'].map(function (label) {
+      var on = !!chipsOn[label];
+      return {
+        label: label, on: on, off: !on,
+        toggle: function () {
+          var next = Object.assign({}, chipsOn);
+          next[label] = !on;
+          self.setState({ chips: next });
+        }
+      };
+    });
+
+    return { cards: cards, tabs: tabs, chips: chips };
+  }
+}
+DC.mount(Component, {});
+</script>
+</body>
+</html>

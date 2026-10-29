@@ -1,0 +1,390 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>My bids</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap">
+<style>
+body{margin:0;background:#F6F7F9}
+a{color:#0F2A44}a:hover{color:#1B4470}
+.site-nav{display:flex}
+.menu-btn{display:none}
+.list-btn{display:inline-flex}
+@media (max-width: 920px){.site-nav{display:none}.menu-btn{display:inline-flex}.list-btn{display:none}}
+</style>
+<style>
+#dc-root div[style*="overflow-x: auto"]{position:relative}
+@media (max-width:860px){aside{min-width:0}}
+@media (max-width:520px){
+header > div{gap:12px !important;padding-left:16px !important;padding-right:16px !important}
+header a[style*="padding: 0 18px; height: 44px"]{padding:0 12px !important}
+}
+</style>
+
+</head>
+<body>
+<template id="dc-tpl">
+<div style="font-family: 'Inter', system-ui, sans-serif; color: #14202E; background: #F6F7F9; font-variant-numeric: tabular-nums; min-height: 100vh">
+
+<!-- Header (signed in) -->
+<header style="background: #0F2A44">
+<div style="max-width: 1280px; margin: 0 auto; padding: 0 24px; height: 72px; display: flex; align-items: center; gap: 32px">
+<a href="index.html" style="display: flex; align-items: center; gap: 10px; text-decoration: none; color: #FFFFFF; flex-shrink: 0">
+<span style="width: 32px; height: 32px; border-radius: 8px; background: #FFFFFF; display: inline-flex; align-items: center; justify-content: center">
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0F2A44" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 21V7l8-4 8 4v14"></path><path d="M9 21v-5h6v5"></path><path d="M9 10h.01M15 10h.01"></path></svg>
+</span>
+<span style="font-size: 18px; font-weight: 700; letter-spacing: -0.01em">[Your brand]</span>
+</a>
+<nav class="site-nav" aria-label="Main" style="align-items: center; gap: 4px; flex: 1 1 auto">
+<a href="search.html" style="color: #D3DDE8; text-decoration: none; font-size: 15px; font-weight: 500; padding: 12px 14px; border-radius: 8px">Buy hotels</a>
+<a href="seller-dashboard.html" style="color: #D3DDE8; text-decoration: none; font-size: 15px; font-weight: 500; padding: 12px 14px; border-radius: 8px">Sell a hotel</a>
+<a href="index.html" style="color: #D3DDE8; text-decoration: none; font-size: 15px; font-weight: 500; padding: 12px 14px; border-radius: 8px">How it works</a>
+<a href="#" aria-current="page" style="color: #FFFFFF; text-decoration: none; font-size: 15px; font-weight: 600; padding: 12px 14px; border-radius: 8px; background: rgba(255,255,255,0.1)">My bids</a>
+</nav>
+<div style="display: flex; align-items: center; gap: 10px; margin-left: auto">
+<a href="sell-financials.html" class="list-btn" style="background: #FFFFFF; color: #0F2A44; text-decoration: none; font-size: 15px; font-weight: 600; padding: 0 18px; height: 44px; align-items: center; border-radius: 8px; white-space: nowrap">List your hotel</a>
+<a href="#notifications" aria-label="{{bellLabel}}" style="position: relative; width: 44px; height: 44px; display: inline-flex; align-items: center; justify-content: center; border-radius: 8px; color: #FFFFFF">
+<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"></path><path d="M10 21h4"></path></svg>
+<template data-sc="if" value="{{hasUnread}}" hint-placeholder-val="{{true}}">
+<span aria-hidden="true" style="position: absolute; top: 6px; right: 5px; min-width: 18px; height: 18px; padding: 0 5px; box-sizing: border-box; border-radius: 999px; background: #D92D20; color: #FFFFFF; font-size: 11px; font-weight: 700; display: inline-flex; align-items: center; justify-content: center; border: 2px solid #0F2A44">{{unread}}</span>
+</template>
+</a>
+<button type="button" aria-label="Account menu for Daniel Whitaker" style="width: 40px; height: 40px; border-radius: 999px; border: 0; background: #E6EEF6; color: #0F2A44; font: inherit; font-size: 14px; font-weight: 700; cursor: pointer">DW</button>
+<button type="button" class="menu-btn" aria-label="Open menu" style="width: 44px; height: 44px; align-items: center; justify-content: center; background: transparent; border: 1px solid rgba(255,255,255,0.3); border-radius: 8px; color: #FFFFFF; cursor: pointer">
+<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"></path></svg>
+</button>
+</div>
+</div>
+</header>
+
+<div style="max-width: 1280px; margin: 0 auto; padding: 32px 24px 64px; display: flex; flex-direction: column; gap: 24px">
+
+<div style="display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 16px">
+<div style="display: flex; flex-direction: column; gap: 6px">
+<h1 style="margin: 0; font-size: 30px; font-weight: 700; letter-spacing: -0.02em; color: #0F2A44">My bids</h1>
+<p style="margin: 0; font-size: 15px; color: #5A6675">Daniel Whitaker · Verified investor</p>
+</div>
+<a href="search.html" style="height: 44px; padding: 0 16px; display: inline-flex; align-items: center; gap: 8px; border: 1px solid #D5DAE1; background: #FFFFFF; border-radius: 8px; text-decoration: none; font-size: 14px; font-weight: 600">
+<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.5-3.5"></path></svg>Browse auctions</a>
+</div>
+
+<!-- Summary tiles -->
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr)); gap: 16px">
+<button type="button" onClick="{{goActive}}" style="text-align: left; background: #FFFFFF; border: 1px solid #E3E6EB; border-radius: 12px; padding: 18px 20px; display: flex; align-items: center; gap: 16px; cursor: pointer; font: inherit">
+<span style="width: 44px; height: 44px; border-radius: 999px; background: #E6F4EC; display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0">
+<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1F7A4D" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 15 6-6 6 6"></path></svg></span>
+<span style="display: flex; flex-direction: column; gap: 2px">
+<span style="font-size: 32px; line-height: 1; font-weight: 700; color: #1F7A4D">2</span>
+<span style="font-size: 14px; font-weight: 600; color: #145C38">Winning</span>
+</span>
+</button>
+<button type="button" onClick="{{goActive}}" style="text-align: left; background: #FFFFFF; border: 1px solid #E3E6EB; border-radius: 12px; padding: 18px 20px; display: flex; align-items: center; gap: 16px; cursor: pointer; font: inherit">
+<span style="width: 44px; height: 44px; border-radius: 999px; background: #FDECEC; display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0">
+<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#B42318" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></span>
+<span style="display: flex; flex-direction: column; gap: 2px">
+<span style="font-size: 32px; line-height: 1; font-weight: 700; color: #B42318">1</span>
+<span style="font-size: 14px; font-weight: 600; color: #8E1D17">Outbid</span>
+</span>
+</button>
+<button type="button" onClick="{{goWatch}}" style="text-align: left; background: #FFFFFF; border: 1px solid #E3E6EB; border-radius: 12px; padding: 18px 20px; display: flex; align-items: center; gap: 16px; cursor: pointer; font: inherit">
+<span style="width: 44px; height: 44px; border-radius: 999px; background: #EEF3F8; display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0">
+<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0F2A44" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M12 20s-7-4.4-9.2-9A4.8 4.8 0 0 1 12 6.3 4.8 4.8 0 0 1 21.2 11C19 15.6 12 20 12 20z"></path></svg></span>
+<span style="display: flex; flex-direction: column; gap: 2px">
+<span style="font-size: 32px; line-height: 1; font-weight: 700; color: #0F2A44">6</span>
+<span style="font-size: 14px; font-weight: 600; color: #3D4A5A">Watching</span>
+</span>
+</button>
+<button type="button" onClick="{{goWon}}" style="text-align: left; background: #FFFFFF; border: 1px solid #E3E6EB; border-radius: 12px; padding: 18px 20px; display: flex; align-items: center; gap: 16px; cursor: pointer; font: inherit">
+<span style="width: 44px; height: 44px; border-radius: 999px; background: #EEF3F8; display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0">
+<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0F2A44" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 21h8M12 17v4M7 4h10v5a5 5 0 0 1-10 0z"></path><path d="M7 6H4v1a3 3 0 0 0 3 3M17 6h3v1a3 3 0 0 1-3 3"></path></svg></span>
+<span style="display: flex; flex-direction: column; gap: 2px">
+<span style="font-size: 32px; line-height: 1; font-weight: 700; color: #0F2A44">1</span>
+<span style="font-size: 14px; font-weight: 600; color: #3D4A5A">Won</span>
+</span>
+</button>
+</div>
+
+<div style="display: flex; flex-wrap: wrap; gap: 24px; align-items: flex-start">
+
+<!-- Table -->
+<section aria-label="Bids" style="flex: 999 1 680px; min-width: 0; background: #FFFFFF; border: 1px solid #E3E6EB; border-radius: 12px; overflow: hidden">
+<div style="display: flex; gap: 4px; padding: 0 12px; border-bottom: 1px solid #E3E6EB; overflow-x: auto">
+<template data-sc="for" list="{{tabs}}" as="t" hint-placeholder-count="4">
+<button type="button" aria-pressed="{{t.selected}}" onClick="{{t.pick}}" style="height: 52px; padding: 0 12px; background: transparent; border: 0; border-bottom: 2px solid {{t.bar}}; margin-bottom: -1px; color: {{t.color}}; font: inherit; font-size: 15px; font-weight: {{t.weight}}; cursor: pointer; white-space: nowrap; display: inline-flex; align-items: center; gap: 8px">{{t.label}}
+<span style="min-width: 22px; height: 22px; padding: 0 6px; box-sizing: border-box; border-radius: 999px; background: {{t.countBg}}; color: {{t.countFg}}; font-size: 12px; font-weight: 700; display: inline-flex; align-items: center; justify-content: center">{{t.count}}</span>
+</button>
+</template>
+</div>
+<div style="overflow-x: auto">
+<table style="width: 100%; min-width: 860px; border-collapse: collapse">
+<caption style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0)">{{caption}}</caption>
+<thead>
+<tr style="background: #F9FAFB">
+<th scope="col" style="text-align: left; padding: 12px 16px; font-size: 12px; font-weight: 600; color: #4A5666; border-bottom: 1px solid #E9ECF0">Hotel</th>
+<th scope="col" style="text-align: left; padding: 12px 12px; font-size: 12px; font-weight: 600; color: #4A5666; border-bottom: 1px solid #E9ECF0">Status</th>
+<th scope="col" style="text-align: right; padding: 12px 12px; font-size: 12px; font-weight: 600; color: #4A5666; border-bottom: 1px solid #E9ECF0">{{bidHeader}}</th>
+<th scope="col" style="text-align: right; padding: 12px 12px; font-size: 12px; font-weight: 600; color: #4A5666; border-bottom: 1px solid #E9ECF0">My max bid</th>
+<th scope="col" style="text-align: right; padding: 12px 12px; font-size: 12px; font-weight: 600; color: #4A5666; border-bottom: 1px solid #E9ECF0">Keys</th>
+<th scope="col" style="text-align: left; padding: 12px 12px; font-size: 12px; font-weight: 600; color: #4A5666; border-bottom: 1px solid #E9ECF0">{{endsHeader}}</th>
+<th scope="col" style="text-align: right; padding: 12px 16px; font-size: 12px; font-weight: 600; color: #4A5666; border-bottom: 1px solid #E9ECF0"><span style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0)">Action</span></th>
+</tr>
+</thead>
+<tbody>
+<template data-sc="for" list="{{rows}}" as="r" hint-placeholder-count="3">
+<tr style="border-bottom: 1px solid #E9ECF0; background: {{r.rowBg}}">
+<td style="padding: 14px 16px; border-bottom: 1px solid #E9ECF0">
+<div style="display: flex; align-items: center; gap: 12px">
+<span aria-hidden="true" style="width: 56px; height: 42px; border-radius: 6px; background: #DFE3E8; flex-shrink: 0"></span>
+<span style="display: flex; flex-direction: column; gap: 2px; min-width: 0">
+<a href="{{r.href}}" style="font-size: 14px; font-weight: 600; color: #14202E; text-decoration: none">{{r.name}}</a>
+<span style="font-size: 13px; color: #5A6675">{{r.city}}</span>
+</span>
+</div>
+</td>
+<td style="padding: 14px 12px; border-bottom: 1px solid #E9ECF0">
+<span style="display: inline-flex; flex-direction: column; gap: 3px; align-items: flex-start">
+<span style="display: inline-flex; align-items: center; gap: 5px; height: 24px; padding: 0 9px; border-radius: 999px; font-size: 12px; font-weight: 600; white-space: nowrap; background: {{r.chipBg}}; color: {{r.chipFg}}; border: 1px solid {{r.chipBorder}}">
+<span aria-hidden="true" style="width: 6px; height: 6px; border-radius: 999px; background: {{r.chipDot}}"></span>{{r.status}}</span>
+<template data-sc="if" value="{{r.hasNote}}" hint-placeholder-val="{{false}}"><span style="font-size: 12px; color: #4A5666">{{r.note}}</span></template>
+</span>
+</td>
+<td style="padding: 14px 12px; text-align: right; font-size: 14px; font-weight: 700; color: #0F2A44; border-bottom: 1px solid #E9ECF0; white-space: nowrap">{{r.current}}</td>
+<td style="padding: 14px 12px; text-align: right; font-size: 14px; color: #14202E; border-bottom: 1px solid #E9ECF0; white-space: nowrap">{{r.myMax}}</td>
+<td style="padding: 14px 12px; text-align: right; font-size: 14px; color: #14202E; border-bottom: 1px solid #E9ECF0">{{r.keys}}</td>
+<td style="padding: 14px 12px; border-bottom: 1px solid #E9ECF0; white-space: nowrap">
+<template data-sc="if" value="{{r.urgent}}" hint-placeholder-val="{{false}}">
+<span style="display: inline-flex; align-items: center; gap: 5px; height: 26px; padding: 0 9px; border-radius: 999px; background: #FDF0D5; border: 1px solid #F2D49B; color: #7A4A00; font-size: 13px; font-weight: 700">
+<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 2"></path></svg>{{r.ends}}</span>
+</template>
+<template data-sc="if" value="{{r.calm}}" hint-placeholder-val="{{true}}">
+<span style="font-size: 14px; color: #3D4A5A">{{r.ends}}</span>
+</template>
+</td>
+<td style="padding: 14px 16px; text-align: right; border-bottom: 1px solid #E9ECF0; white-space: nowrap">
+<template data-sc="if" value="{{r.isRaise}}" hint-placeholder-val="{{false}}">
+<a href="listing.html" style="height: 40px; padding: 0 16px; display: inline-flex; align-items: center; border-radius: 8px; background: #1F7A4D; color: #FFFFFF; text-decoration: none; font-size: 14px; font-weight: 700">Raise bid</a>
+</template>
+<template data-sc="if" value="{{r.isView}}" hint-placeholder-val="{{true}}">
+<a href="{{r.href}}" aria-label="{{r.viewLabel}}" style="height: 40px; padding: 0 16px; display: inline-flex; align-items: center; border-radius: 8px; border: 1px solid #D5DAE1; background: #FFFFFF; color: #0F2A44; text-decoration: none; font-size: 14px; font-weight: 600">View</a>
+</template>
+<template data-sc="if" value="{{r.isNext}}" hint-placeholder-val="{{false}}">
+<a href="#" style="height: 40px; padding: 0 16px; display: inline-flex; align-items: center; border-radius: 8px; background: #0F2A44; color: #FFFFFF; text-decoration: none; font-size: 14px; font-weight: 600">Closing steps</a>
+</template>
+</td>
+</tr>
+</template>
+</tbody>
+</table>
+</div>
+<template data-sc="if" value="{{hasFoot}}" hint-placeholder-val="{{false}}">
+<p style="margin: 0; padding: 12px 16px; font-size: 13px; color: #4A5666; background: #F9FAFB">{{foot}}</p>
+</template>
+</section>
+
+<!-- Right column -->
+<aside style="flex: 1 1 320px; min-width: 0; display: flex; flex-direction: column; gap: 16px">
+
+<section aria-labelledby="h-ver" style="background: #FFFFFF; border: 1px solid #E3E6EB; border-radius: 12px; padding: 20px; display: flex; flex-direction: column; gap: 14px">
+<div style="display: flex; justify-content: space-between; align-items: center; gap: 8px">
+<h2 id="h-ver" style="margin: 0; font-size: 17px; font-weight: 700; color: #0F2A44">Verification</h2>
+<span style="display: inline-flex; align-items: center; gap: 5px; height: 26px; padding: 0 10px; border-radius: 6px; background: #E6EEF6; color: #0F2A44; font-size: 12px; font-weight: 600">
+<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 4 6v6c0 4.5 3.4 8.3 8 9 4.6-.7 8-4.5 8-9V6z"></path><path d="m9 12 2 2 4-4"></path></svg>Verified</span>
+</div>
+<ul style="list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column">
+<li style="display: flex; gap: 12px; padding: 12px 0; border-top: 1px solid #E9ECF0">
+<span style="width: 32px; height: 32px; border-radius: 999px; background: #EEF3F8; display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0">
+<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0F2A44" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"></path><path d="M14 3v5h5M9 15l2 2 4-4"></path></svg></span>
+<span style="display: flex; flex-direction: column; gap: 2px; flex: 1 1 auto">
+<span style="font-size: 14px; font-weight: 600">NDA signed for 3 hotels</span>
+<a href="#" style="font-size: 13px; font-weight: 500; align-self: flex-start">View signed NDAs</a>
+</span>
+</li>
+<li style="display: flex; gap: 12px; padding: 12px 0; border-top: 1px solid #E9ECF0">
+<span style="width: 32px; height: 32px; border-radius: 999px; background: #EEF3F8; display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0">
+<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0F2A44" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="6" width="18" height="13" rx="2"></rect><path d="M3 10h18M7 15h4"></path></svg></span>
+<span style="display: flex; flex-direction: column; gap: 3px; flex: 1 1 auto">
+<span style="font-size: 14px; font-weight: 600">Proof of funds approved</span>
+<span style="font-size: 13px; color: #3D4A5A">Up to <strong style="color: #14202E">$6,000,000</strong></span>
+<span style="font-size: 12px; color: #4A5666">Expires in 60 days · Dec 22, 2026</span>
+<span aria-hidden="true" style="margin-top: 6px; height: 6px; border-radius: 999px; background: #E3E6EB; overflow: hidden; display: block"><span style="display: block; width: 67%; height: 100%; background: #0F2A44"></span></span>
+</span>
+</li>
+</ul>
+<a href="register-funds.html" style="height: 42px; display: inline-flex; align-items: center; justify-content: center; border: 1px solid #D5DAE1; border-radius: 8px; text-decoration: none; font-size: 14px; font-weight: 600">Update proof of funds</a>
+</section>
+
+<section id="notifications" aria-labelledby="h-notif" style="background: #FFFFFF; border: 1px solid #E3E6EB; border-radius: 12px; padding: 20px; display: flex; flex-direction: column; gap: 6px">
+<div style="display: flex; justify-content: space-between; align-items: center; gap: 8px; margin-bottom: 4px">
+<h2 id="h-notif" style="margin: 0; font-size: 17px; font-weight: 700; color: #0F2A44">Notifications</h2>
+<template data-sc="if" value="{{hasUnread}}" hint-placeholder-val="{{true}}">
+<button type="button" onClick="{{markAll}}" style="height: 36px; padding: 0 4px; border: 0; background: transparent; color: #0F2A44; font: inherit; font-size: 13px; font-weight: 600; cursor: pointer; text-decoration: underline; text-underline-offset: 3px">Mark all read</button>
+</template>
+</div>
+<ul style="list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column">
+<template data-sc="for" list="{{notes}}" as="n" hint-placeholder-count="5">
+<li style="display: flex; gap: 12px; padding: 12px 10px; margin: 0 -10px; border-radius: 8px; background: {{n.bg}}">
+<span style="width: 32px; height: 32px; border-radius: 999px; background: {{n.iconBg}}; display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0">
+<span aria-hidden="true" style="width: 10px; height: 10px; border-radius: 999px; background: {{n.iconFg}}"></span>
+</span>
+<span style="display: flex; flex-direction: column; gap: 3px; flex: 1 1 auto; min-width: 0">
+<span style="font-size: 14px; line-height: 1.4; font-weight: {{n.weight}}; color: #14202E">{{n.title}}</span>
+<span style="font-size: 12px; color: #4A5666">{{n.meta}}</span>
+<template data-sc="if" value="{{n.hasCta}}" hint-placeholder-val="{{false}}">
+<a href="listing.html" style="font-size: 13px; font-weight: 600; color: #1F7A4D; align-self: flex-start; padding: 2px 0">{{n.cta}}</a>
+</template>
+</span>
+<template data-sc="if" value="{{n.unread}}" hint-placeholder-val="{{false}}">
+<span style="width: 8px; height: 8px; border-radius: 999px; background: #0F2A44; margin-top: 6px; flex-shrink: 0"><span style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0)">Unread</span></span>
+</template>
+</li>
+</template>
+</ul>
+</section>
+</aside>
+</div>
+</div>
+
+<footer style="background: #FFFFFF; border-top: 1px solid #E3E6EB; padding: 32px 24px">
+<div style="max-width: 1280px; margin: 0 auto; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px">
+<span style="font-size: 14px; color: #5A6675">© 2026 [Your brand]. All rights reserved.</span>
+<nav aria-label="Footer" style="display: flex; flex-wrap: wrap; gap: 4px 8px">
+<a href="#" style="color: #3D4A5A; text-decoration: none; font-size: 14px; padding: 10px 8px">Auction rules</a>
+<a href="#" style="color: #3D4A5A; text-decoration: none; font-size: 14px; padding: 10px 8px">FAQ</a>
+<a href="#" style="color: #3D4A5A; text-decoration: none; font-size: 14px; padding: 10px 8px">Terms</a>
+<a href="#" style="color: #3D4A5A; text-decoration: none; font-size: 14px; padding: 10px 8px">Privacy</a>
+<a href="#" style="color: #3D4A5A; text-decoration: none; font-size: 14px; padding: 10px 8px">Contact</a>
+</nav>
+</div>
+</footer>
+</div>
+</template>
+<div id="dc-root"></div>
+<script src="runtime.js"></script>
+<script>
+class Component extends DCLogic {
+  componentDidMount() {
+    var self = this;
+    this._timer = setInterval(function () {
+      var s = self.state || {};
+      self.setState({ elapsed: (s.elapsed || 0) + 1 });
+    }, 1000);
+  }
+  componentWillUnmount() { clearInterval(this._timer); }
+
+  renderVals() {
+    var self = this;
+    var s = this.state || {};
+    var tab = s.tab || 'active';
+    var el = s.elapsed || 0;
+    function money(n) { return '$' + Math.round(n).toLocaleString('en-US'); }
+    function ends(sec) {
+      sec = Math.max(0, sec - el);
+      var d = Math.floor(sec / 86400), h = Math.floor((sec % 86400) / 3600), m = Math.floor((sec % 3600) / 60), x = sec % 60;
+      if (d > 0) return d + 'd ' + h + 'h';
+      if (sec < 7200) return h + 'h ' + (m < 10 ? '0' : '') + m + 'm ' + (x < 10 ? '0' : '') + x + 's';
+      return h + 'h ' + m + 'm';
+    }
+
+    var CHIP = {
+      winning: { label: 'Winning', bg: '#E6F4EC', fg: '#145C38', border: '#BFE1CC', dot: '#1F7A4D' },
+      outbid: { label: 'Outbid', bg: '#FDECEC', fg: '#8E1D17', border: '#F5C6C6', dot: '#D92D20' },
+      soon: { label: 'Ending soon', bg: '#FDF0D5', fg: '#7A4A00', border: '#F2D49B', dot: '#C77C02' },
+      watching: { label: 'Not bidding', bg: '#FFFFFF', fg: '#3D4A5A', border: '#D5DAE1', dot: '#8A94A1' },
+      ended: { label: 'Ended', bg: '#E9ECF0', fg: '#3D4A5A', border: '#DDE2E8', dot: '#6B7684' }
+    };
+
+    var data = {
+      active: [
+        { name: 'Hampton Inn Springfield South', city: 'Springfield, MO', kind: 'outbid', current: 4250000, myMax: 4225000, keys: 64, sec: 4365, action: 'raise', href: 'listing.html' },
+        { name: 'Comfort Inn Rochester', city: 'Rochester, MN', kind: 'winning', current: 3620000, myMax: 3800000, keys: 86, sec: 6480, action: 'view' },
+        { name: 'Cedar Pines Motel', city: 'Wisconsin Dells, WI', kind: 'winning', current: 865000, myMax: 950000, keys: 31, sec: 29700, action: 'view' }
+      ],
+      watch: [
+        { name: 'Riverbend Motor Lodge', city: 'Branson, MO', kind: 'soon', current: 1180000, keys: 38, sec: 20400, action: 'view' },
+        { name: 'The Larkspur', city: 'Asheville, NC', kind: 'soon', current: 6900000, keys: 42, sec: 39780, action: 'view', note: 'Above your $6M approval' },
+        { name: 'WoodSpring Suites Amarillo', city: 'Amarillo, TX', kind: 'watching', current: 7450000, keys: 122, sec: 158400, action: 'view', note: 'Above your $6M approval' },
+        { name: 'Days Inn Rapid City', city: 'Rapid City, SD', kind: 'watching', current: 2640000, keys: 79, sec: 586800, action: 'view' },
+        { name: 'Quality Inn Joplin', city: 'Joplin, MO', kind: 'watching', current: 2980000, keys: 92, sec: 759600, action: 'view' },
+        { name: 'Northwoods Inn & Suites', city: 'Minocqua, WI', kind: 'watching', current: 980000, keys: 28, sec: 1018800, action: 'view' }
+      ],
+      won: [
+        { name: 'Prairie Rose Inn', city: 'Hays, KS', kind: 'ended', note: 'You won', current: 1410000, myMax: 1450000, keys: 44, endedText: 'Oct 18, 2026', action: 'next' }
+      ],
+      lost: [
+        { name: 'Super 8 Mankato', city: 'Mankato, MN', kind: 'ended', note: 'Not won', current: 2180000, myMax: 2050000, keys: 61, endedText: 'Oct 12, 2026', action: 'view' },
+        { name: 'Riverside Motel', city: 'Galena, IL', kind: 'ended', note: 'Not won', current: 640000, myMax: 600000, keys: 22, endedText: 'Sep 29, 2026', action: 'view' }
+      ]
+    };
+
+    var rows = data[tab].map(function (r) {
+      var c = CHIP[r.kind];
+      var live = r.sec != null;
+      var urgent = live && (r.sec - el) < 7200;
+      return {
+        name: r.name, city: r.city, href: r.href || 'listing.html',
+        status: c.label, chipBg: c.bg, chipFg: c.fg, chipBorder: c.border, chipDot: c.dot,
+        hasNote: !!r.note, note: r.note || '',
+        current: money(r.current), myMax: r.myMax ? money(r.myMax) : '—', keys: r.keys,
+        ends: live ? ends(r.sec) : r.endedText,
+        urgent: urgent, calm: !urgent,
+        isRaise: r.action === 'raise', isView: r.action === 'view', isNext: r.action === 'next',
+        viewLabel: 'View ' + r.name,
+        rowBg: r.kind === 'outbid' ? '#FFFBFB' : '#FFFFFF'
+      };
+    });
+
+    var tabs = [['active', 'Active', 3], ['watch', 'Watchlist', 6], ['won', 'Won', 1], ['lost', 'Lost', 2]].map(function (t) {
+      var on = tab === t[0];
+      return {
+        label: t[1], count: t[2], selected: on,
+        bar: on ? '#0F2A44' : 'transparent', color: on ? '#0F2A44' : '#5A6675', weight: on ? 600 : 500,
+        countBg: on ? '#0F2A44' : '#E9ECF0', countFg: on ? '#FFFFFF' : '#3D4A5A',
+        pick: function () { self.setState({ tab: t[0] }); }
+      };
+    });
+
+    var read = !!s.allRead;
+    var noteData = [
+      { kind: 'outbid', title: 'You were outbid on Hampton Inn Springfield South', meta: 'Bidder 7 bid $4,250,000 · 2 min ago', cta: 'Raise bid', unread: true },
+      { kind: 'soon', title: 'Comfort Inn Rochester ends in under 2 hours', meta: 'You are winning at $3,620,000 · 12 min ago', unread: true },
+      { kind: 'soon', title: 'Hampton Inn Springfield South ends in under 2 hours', meta: '48 min ago', unread: true },
+      { kind: 'winning', title: 'You are winning Cedar Pines Motel', meta: 'Your max bid of $950,000 is leading · 1 hr ago', unread: false },
+      { kind: 'info', title: 'Proof of funds approved up to $6,000,000', meta: 'Oct 21, 2026', unread: false },
+      { kind: 'info', title: 'NDA signed for Comfort Inn Rochester', meta: 'Oct 20, 2026', unread: false }
+    ];
+    var ICON = {
+      outbid: ['#FDECEC', '#D92D20'], soon: ['#FDF0D5', '#C77C02'], winning: ['#E6F4EC', '#1F7A4D'], info: ['#EEF3F8', '#0F2A44']
+    };
+    var notes = noteData.map(function (n) {
+      var un = n.unread && !read;
+      return {
+        title: n.title, meta: n.meta, cta: n.cta || '', hasCta: !!n.cta,
+        unread: un, weight: un ? 600 : 500, bg: un ? '#F6F8FB' : 'transparent',
+        iconBg: ICON[n.kind][0], iconFg: ICON[n.kind][1]
+      };
+    });
+    var unreadCount = read ? 0 : noteData.filter(function (n) { return n.unread; }).length;
+
+    var foot = { active: '', watch: '2 watched hotels are above your approved proof of funds. Update it to bid on them.', won: '', lost: '' }[tab];
+
+    return {
+      rows: rows, tabs: tabs, notes: notes,
+      caption: { active: 'Active bids', watch: 'Watchlist', won: 'Won auctions', lost: 'Lost auctions' }[tab],
+      bidHeader: (tab === 'won' || tab === 'lost') ? 'Final bid' : 'Current bid',
+      endsHeader: (tab === 'won' || tab === 'lost') ? 'Ended' : 'Ends in',
+      hasFoot: !!foot, foot: foot,
+      unread: unreadCount, hasUnread: unreadCount > 0,
+      bellLabel: unreadCount ? 'Notifications, ' + unreadCount + ' unread' : 'Notifications',
+      markAll: function () { self.setState({ allRead: true }); },
+      goActive: function () { self.setState({ tab: 'active' }); },
+      goWatch: function () { self.setState({ tab: 'watch' }); },
+      goWon: function () { self.setState({ tab: 'won' }); }
+    };
+  }
+}
+DC.mount(Component, {});
+</script>
+</body>
+</html>

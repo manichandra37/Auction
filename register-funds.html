@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Register to bid – Proof of funds</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap">
+<style>
+body{margin:0;background:#F6F7F9}
+a{color:#0F2A44}a:hover{color:#1B4470}
+input::placeholder{color:#6B7684}
+.modal-wrap{padding:48px 24px}
+.modal{border-radius:16px}
+.bg-side{display:flex}
+@media (max-width: 640px){
+.modal-wrap{padding:0}
+.modal{border-radius:0;min-height:100vh}
+.step-label{display:none}
+}
+@media (max-width: 920px){.bg-side{display:none}}
+</style>
+<style>
+#dc-root div[style*="overflow-x: auto"]{position:relative}
+@media (max-width:860px){aside{min-width:0}}
+@media (max-width:520px){
+header > div{gap:12px !important;padding-left:16px !important;padding-right:16px !important}
+header a[style*="padding: 0 18px; height: 44px"]{padding:0 12px !important}
+}
+</style>
+
+</head>
+<body>
+<template id="dc-tpl">
+<div style="font-family: 'Inter', system-ui, sans-serif; color: #14202E; font-variant-numeric: tabular-nums; position: relative; min-height: 100vh; overflow: hidden; background: #F6F7F9">
+
+<!-- Dimmed detail page behind the modal -->
+<div aria-hidden="true" style="position: absolute; inset: 0">
+<div style="background: #0F2A44; height: 72px"></div>
+<div style="max-width: 1280px; margin: 0 auto; padding: 20px 24px; display: flex; gap: 28px">
+<div style="flex: 1 1 auto; display: flex; flex-direction: column; gap: 16px; min-width: 0">
+<div style="width: 280px; height: 12px; border-radius: 4px; background: #DDE2E8"></div>
+<div style="width: 460px; max-width: 100%; height: 34px; border-radius: 6px; background: #CBD3DC"></div>
+<div style="width: 320px; height: 14px; border-radius: 4px; background: #DDE2E8"></div>
+<div style="display: grid; grid-template-columns: 2fr 1fr 1fr; grid-template-rows: 210px 210px; gap: 8px">
+<div style="grid-row: 1 / span 2; background: #DFE3E8; border-radius: 12px"></div>
+<div style="background: #DFE3E8; border-radius: 10px"></div>
+<div style="background: #DFE3E8; border-radius: 10px"></div>
+<div style="background: #DFE3E8; border-radius: 10px"></div>
+<div style="background: #DFE3E8; border-radius: 10px"></div>
+</div>
+<div style="height: 220px; background: #FFFFFF; border: 1px solid #E3E6EB; border-radius: 12px"></div>
+</div>
+<div class="bg-side" style="flex: 0 0 360px; flex-direction: column; gap: 16px">
+<div style="height: 560px; background: #FFFFFF; border: 1px solid #E3E6EB; border-radius: 12px; padding: 20px; box-sizing: border-box; display: flex; flex-direction: column; gap: 14px">
+<div style="height: 54px; border-radius: 8px; background: #FDECEC"></div>
+<div style="width: 140px; height: 30px; border-radius: 8px; background: #FDF0D5"></div>
+<div style="width: 240px; height: 40px; border-radius: 6px; background: #CBD3DC"></div>
+<div style="height: 52px; border-radius: 8px; border: 1px solid #DDE2E8"></div>
+<div style="height: 56px; border-radius: 10px; background: #1F7A4D"></div>
+</div>
+</div>
+</div>
+<div style="position: absolute; inset: 0; background: rgba(8,20,34,0.62)"></div>
+</div>
+
+<!-- Modal -->
+<div class="modal-wrap" style="position: relative; display: flex; justify-content: center; align-items: flex-start">
+<section class="modal" role="dialog" aria-modal="true" aria-labelledby="reg-title" style="width: 100%; max-width: 640px; background: #FFFFFF; box-shadow: 0 24px 64px rgba(5,18,32,0.4); display: flex; flex-direction: column; overflow: hidden">
+
+<div style="padding: 22px 24px 18px; display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; border-bottom: 1px solid #E9ECF0">
+<div style="display: flex; flex-direction: column; gap: 4px; min-width: 0">
+<h2 id="reg-title" style="margin: 0; font-size: 20px; font-weight: 700; color: #0F2A44">Register to bid</h2>
+<p style="margin: 0; font-size: 13px; color: #5A6675">Hampton Inn Springfield South · Ends Oct 23, 7:53 PM CDT</p>
+</div>
+<a href="listing.html" aria-label="Close" style="width: 44px; height: 44px; margin: -8px -10px 0 0; display: inline-flex; align-items: center; justify-content: center; border-radius: 8px; color: #3D4A5A; flex-shrink: 0">
+<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"></path></svg>
+</a>
+</div>
+
+<!-- Stepper -->
+<ol aria-label="Registration steps" style="list-style: none; margin: 0; padding: 18px 24px; display: flex; align-items: center; gap: 10px; background: #F9FAFB; border-bottom: 1px solid #E9ECF0">
+<li style="display: flex; align-items: center; gap: 8px; flex-shrink: 0">
+<span style="width: 28px; height: 28px; border-radius: 999px; background: #0F2A44; color: #FFFFFF; display: inline-flex; align-items: center; justify-content: center">
+<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5 9-10"></path></svg>
+</span>
+<span class="step-label" style="font-size: 14px; font-weight: 500; color: #3D4A5A">Sign NDA</span>
+<span style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0)">Step 1, Sign NDA, completed</span>
+</li>
+<li aria-hidden="true" style="flex: 1 1 auto; height: 2px; background: #0F2A44; min-width: 16px"></li>
+<li aria-current="step" style="display: flex; align-items: center; gap: 8px; flex-shrink: 0">
+<span style="width: 28px; height: 28px; border-radius: 999px; border: 2px solid #0F2A44; color: #0F2A44; box-sizing: border-box; display: inline-flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700">2</span>
+<span style="font-size: 14px; font-weight: 700; color: #0F2A44">Proof of funds</span>
+</li>
+<li aria-hidden="true" style="flex: 1 1 auto; height: 2px; background: #DDE2E8; min-width: 16px"></li>
+<li style="display: flex; align-items: center; gap: 8px; flex-shrink: 0">
+<span style="width: 28px; height: 28px; border-radius: 999px; border: 2px solid #C5CDD6; color: #5A6675; box-sizing: border-box; display: inline-flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 600">3</span>
+<span class="step-label" style="font-size: 14px; font-weight: 500; color: #5A6675">Deposit</span>
+</li>
+</ol>
+
+<!-- Body -->
+<div style="padding: 24px; display: flex; flex-direction: column; gap: 22px">
+<div style="display: flex; flex-direction: column; gap: 6px">
+<h3 style="margin: 0; font-size: 18px; font-weight: 700; color: #14202E">Proof of funds</h3>
+<p style="margin: 0; font-size: 15px; line-height: 1.55; color: #3D4A5A">Upload a bank statement, lender pre-approval or fund letter covering at least <strong style="color: #14202E">$X</strong>.</p>
+</div>
+
+<fieldset style="margin: 0; padding: 0; border: 0; display: flex; flex-direction: column; gap: 10px">
+<legend style="padding: 0; margin-bottom: 10px; font-size: 14px; font-weight: 600; color: #14202E">I'm bidding as</legend>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px">
+<template data-sc="for" list="{{buyerTypes}}" as="b" hint-placeholder-count="3">
+<label style="display: flex; align-items: center; gap: 10px; min-height: 52px; padding: 0 14px; border-radius: 10px; border: {{b.border}}; background: {{b.bg}}; cursor: pointer; font-size: 14px; font-weight: {{b.weight}}; color: #14202E">
+<input type="radio" name="buyer-type" checked="{{b.checked}}" onChange="{{b.pick}}" style="width: 18px; height: 18px; margin: 0; accent-color: #0F2A44">
+{{b.label}}
+</label>
+</template>
+</div>
+</fieldset>
+
+<template data-sc="if" value="{{showName}}" hint-placeholder-val="{{true}}">
+<div style="display: flex; flex-direction: column; gap: 6px">
+<label for="entity-name" style="font-size: 14px; font-weight: 600; color: #14202E">{{nameLabel}}</label>
+<input id="entity-name" type="text" value="{{entityName}}" onChange="{{onName}}" placeholder="{{namePlaceholder}}" style="height: 46px; border: 1px solid #C5CDD6; border-radius: 8px; padding: 0 12px; font: inherit; font-size: 15px; color: #14202E; min-width: 0">
+<span style="font-size: 12px; color: #5A6675">Must match the name on your proof of funds.</span>
+</div>
+</template>
+
+<div style="display: flex; flex-direction: column; gap: 10px">
+<span style="font-size: 14px; font-weight: 600; color: #14202E">Document</span>
+<label for="pof-file" style="display: flex; flex-direction: column; align-items: center; gap: 8px; padding: 22px 16px; border: 1.5px dashed #AEB8C4; border-radius: 12px; background: #F9FAFB; text-align: center; cursor: pointer">
+<span style="width: 44px; height: 44px; border-radius: 999px; background: #E6EEF6; display: inline-flex; align-items: center; justify-content: center">
+<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0F2A44" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 16V4M7 9l5-5 5 5"></path><path d="M4 16v3a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-3"></path></svg>
+</span>
+<span style="font-size: 14px; color: #14202E">Drag and drop a file here, or <span style="color: #0F2A44; font-weight: 600; text-decoration: underline">browse</span></span>
+<span style="font-size: 12px; color: #5A6675">PDF, JPG or PNG · up to 25 MB</span>
+<input id="pof-file" type="file" accept=".pdf,.jpg,.jpeg,.png" onChange="{{onFile}}" style="position: absolute; width: 1px; height: 1px; opacity: 0">
+</label>
+
+<template data-sc="if" value="{{hasFile}}" hint-placeholder-val="{{true}}">
+<div style="display: flex; align-items: center; gap: 12px; padding: 10px 8px 10px 14px; border: 1px solid #E3E6EB; border-radius: 10px">
+<span style="width: 36px; height: 36px; border-radius: 8px; background: #FDECEC; color: #A3231C; display: inline-flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 700; flex-shrink: 0">PDF</span>
+<div style="flex: 1 1 auto; min-width: 0; display: flex; flex-direction: column; gap: 2px">
+<span style="font-size: 14px; font-weight: 600; color: #14202E; overflow: hidden; text-overflow: ellipsis; white-space: nowrap">{{fileName}} · {{fileSize}}</span>
+<span style="font-size: 12px; color: #3D4A5A; display: inline-flex; align-items: center; gap: 4px">
+<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5 9-10"></path></svg>Uploaded</span>
+</div>
+<button type="button" aria-label="{{removeLabel}}" onClick="{{removeFile}}" style="width: 44px; height: 44px; border: 0; background: transparent; border-radius: 8px; color: #3D4A5A; display: inline-flex; align-items: center; justify-content: center; cursor: pointer; flex-shrink: 0">
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h16M10 11v6M14 11v6"></path><path d="M6 7l1 13a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1l1-13M9 7V4h6v3"></path></svg>
+</button>
+</div>
+</template>
+</div>
+
+<div style="display: flex; gap: 10px; align-items: flex-start; background: #EEF3F8; border-radius: 10px; padding: 12px 14px">
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0F2A44" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink: 0; margin-top: 1px"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 2"></path></svg>
+<p style="margin: 0; font-size: 13px; line-height: 1.5; color: #0F2A44">Reviewed by our team within [X] hours. You can keep browsing while we review.</p>
+</div>
+</div>
+
+<!-- Footer -->
+<div style="padding: 16px 24px; border-top: 1px solid #E9ECF0; display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap">
+<a href="register-nda.html" style="height: 48px; padding: 0 20px; display: inline-flex; align-items: center; gap: 6px; border: 1px solid #D5DAE1; border-radius: 8px; background: #FFFFFF; color: #0F2A44; text-decoration: none; font-size: 15px; font-weight: 600">
+<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 18-6-6 6-6"></path></svg>Back</a>
+<template data-sc="if" value="{{canContinue}}" hint-placeholder-val="{{true}}">
+<a href="register-deposit.html" style="height: 48px; padding: 0 22px; display: inline-flex; align-items: center; gap: 6px; border-radius: 8px; background: #0F2A44; color: #FFFFFF; text-decoration: none; font-size: 15px; font-weight: 600">Continue to deposit
+<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"></path></svg></a>
+</template>
+<template data-sc="if" value="{{cannotContinue}}" hint-placeholder-val="{{false}}">
+<button type="button" disabled="{{true}}" style="height: 48px; padding: 0 22px; display: inline-flex; align-items: center; gap: 6px; border: 0; border-radius: 8px; background: #C5CDD6; color: #FFFFFF; font: inherit; font-size: 15px; font-weight: 600; cursor: not-allowed">Continue to deposit</button>
+</template>
+</div>
+</section>
+</div>
+</div>
+</template>
+<div id="dc-root"></div>
+<script src="runtime.js"></script>
+<script>
+class Component extends DCLogic {
+  renderVals() {
+    var self = this;
+    var s = this.state || {};
+    var type = s.type || 'company';
+    var file = s.file === undefined ? { name: 'PreApproval_FirstBank.pdf', size: '1.2 MB' } : s.file;
+    var name = s.name === undefined ? 'Ozark Lodging Partners LLC' : s.name;
+
+    var buyerTypes = [['individual', 'Individual'], ['company', 'LLC / Company'], ['fund', 'Fund']].map(function (p) {
+      var on = type === p[0];
+      return {
+        label: p[1], checked: on,
+        border: on ? '2px solid #0F2A44' : '1px solid #D5DAE1',
+        bg: on ? '#F3F6FA' : '#FFFFFF', weight: on ? 600 : 500,
+        pick: function () { self.setState({ type: p[0] }); }
+      };
+    });
+
+    var showName = type !== 'individual';
+    var nameOk = !showName || name.trim().length > 0;
+
+    return {
+      buyerTypes: buyerTypes,
+      showName: showName,
+      nameLabel: type === 'fund' ? 'Fund name' : 'Company name',
+      namePlaceholder: type === 'fund' ? 'e.g. Meridian Hospitality Fund II' : 'e.g. Ozark Lodging Partners LLC',
+      entityName: name,
+      onName: function (e) { self.setState({ name: e.target.value }); },
+      hasFile: !!file,
+      fileName: file ? file.name : '',
+      fileSize: file ? file.size : '',
+      removeLabel: file ? 'Remove ' + file.name : 'Remove file',
+      removeFile: function () { self.setState({ file: null }); },
+      onFile: function (e) {
+        var f = e.target.files && e.target.files[0];
+        if (!f) return;
+        var mb = (f.size / 1048576).toFixed(1) + ' MB';
+        self.setState({ file: { name: f.name, size: mb } });
+      },
+      canContinue: !!file && nameOk,
+      cannotContinue: !(file && nameOk)
+    };
+  }
+}
+DC.mount(Component, {});
+</script>
+</body>
+</html>
