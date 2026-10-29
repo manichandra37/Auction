@@ -1,4 +1,4 @@
-# Hotel auction marketplace – clickable prototype
+# InnAuction – hotel auction marketplace prototype
 
 Static prototype of an online auction marketplace for hotel and motel properties.
 No build step: every page is plain HTML plus `runtime.js`, so it runs on GitHub Pages as is.
