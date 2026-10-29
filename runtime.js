@@ -144,6 +144,17 @@
     applyProps(live, fresh);
   }
 
+  // Adds photo/photoAlt to any data object whose name has a photo in window.PHOTOS.
+  function addPhotos(v, depth) {
+    if (!window.PHOTOS || depth > 4 || v == null || typeof v !== 'object') return;
+    if (Array.isArray(v)) { v.forEach(function (x) { addPhotos(x, depth + 1); }); return; }
+    if (typeof v.name === 'string' && window.PHOTOS[v.name] && v.photo === undefined) {
+      v.photo = window.PHOTOS[v.name];
+      v.photoAlt = v.name + ' exterior';
+    }
+    for (var k in v) if (typeof v[k] === 'object') addPhotos(v[k], depth + 1);
+  }
+
   function DCLogic(props) {
     this.props = props || {};
     this.state = undefined;
@@ -169,6 +180,7 @@
       inst.__render = function () {
         queued = false;
         var vals = inst.renderVals ? inst.renderVals() : {};
+        addPhotos(vals, 0);
         var fresh = [];
         var kids = tpl.content.childNodes;
         for (var i = 0; i < kids.length; i++) build(kids[i], vals, fresh);

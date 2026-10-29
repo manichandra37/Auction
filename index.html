@@ -5,12 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>InnAuction · Buy and sell hotels at online auction</title>
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
-<meta name="theme-color" content="#0F2A44">
+<meta name="theme-color" content="#1C1F24">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap">
 <style>
-body{margin:0;background:#F6F7F9}
-a{color:#0F2A44}a:hover{color:#1B4470}
+body{margin:0;background:#F5F5F5}
+a{color:#C2410C}a:hover{color:#9A3412}
 .site-nav{display:flex}
 .menu-btn{display:none}
 @media (max-width: 920px){.site-nav{display:none}.menu-btn{display:inline-flex}.signin{display:none}}
@@ -28,26 +28,26 @@ header a[style*="padding: 0 18px; height: 44px"]{padding:0 12px !important}
 </head>
 <body>
 <template id="dc-tpl">
-<div style="font-family: 'Inter', system-ui, sans-serif; color: #14202E; background: #F6F7F9; font-variant-numeric: tabular-nums; min-height: 100vh">
+<div style="font-family: 'Inter', system-ui, sans-serif; color: #14202E; background: #F5F5F5; font-variant-numeric: tabular-nums; min-height: 100vh">
 
 <!-- Header -->
-<header style="background: #0F2A44; border-bottom: 1px solid rgba(255,255,255,0.08)">
+<header style="background: #1C1F24; border-bottom: 1px solid rgba(255,255,255,0.08)">
 <div style="max-width: 1280px; margin: 0 auto; padding: 0 24px; height: 72px; display: flex; align-items: center; gap: 32px">
 <a href="#" style="display: flex; align-items: center; gap: 10px; text-decoration: none; color: #FFFFFF; flex-shrink: 0">
-<span style="width: 32px; height: 32px; border-radius: 8px; background: #FFFFFF; display: inline-flex; align-items: center; justify-content: center">
-<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#0F2A44" stroke-width="2.06" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.8 11.6 12 5.3l8.2 6.3"></path><circle cx="12" cy="13.9" r="2.45" fill="#0F2A44" stroke="none"></circle><path d="M10.5 15h3l.8 3.75h-4.6z" fill="#0F2A44" stroke="none"></path></svg>
+<span style="width: 32px; height: 32px; border-radius: 8px; background: #E8590C; display: inline-flex; align-items: center; justify-content: center">
+<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.06" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.8 11.6 12 5.3l8.2 6.3"></path><circle cx="12" cy="13.9" r="2.45" fill="#FFFFFF" stroke="none"></circle><path d="M10.5 15h3l.8 3.75h-4.6z" fill="#FFFFFF" stroke="none"></path></svg>
 </span>
 <span style="font-size: 18px; font-weight: 700; letter-spacing: -0.01em">Inn<span style="font-weight: 400">Auction</span></span>
 </a>
 <nav class="site-nav" aria-label="Main" style="align-items: center; gap: 4px; flex: 1 1 auto">
 <a href="search.html" style="color: #FFFFFF; text-decoration: none; font-size: 15px; font-weight: 500; padding: 12px 14px; border-radius: 8px">Buy hotels</a>
-<a href="sell-financials.html" style="color: #D3DDE8; text-decoration: none; font-size: 15px; font-weight: 500; padding: 12px 14px; border-radius: 8px">Sell a hotel</a>
-<a href="#how" style="color: #D3DDE8; text-decoration: none; font-size: 15px; font-weight: 500; padding: 12px 14px; border-radius: 8px">How it works</a>
-<a href="my-bids.html" style="color: #D3DDE8; text-decoration: none; font-size: 15px; font-weight: 500; padding: 12px 14px; border-radius: 8px">My bids</a>
+<a href="sell-financials.html" style="color: #D1D5DB; text-decoration: none; font-size: 15px; font-weight: 500; padding: 12px 14px; border-radius: 8px">Sell a hotel</a>
+<a href="#how" style="color: #D1D5DB; text-decoration: none; font-size: 15px; font-weight: 500; padding: 12px 14px; border-radius: 8px">How it works</a>
+<a href="my-bids.html" style="color: #D1D5DB; text-decoration: none; font-size: 15px; font-weight: 500; padding: 12px 14px; border-radius: 8px">My bids</a>
 </nav>
 <div style="display: flex; align-items: center; gap: 8px; margin-left: auto">
 <a href="my-bids.html" class="signin" style="color: #FFFFFF; text-decoration: none; font-size: 15px; font-weight: 500; padding: 12px 14px">Sign in</a>
-<a href="sell-financials.html" style="background: #FFFFFF; color: #0F2A44; text-decoration: none; font-size: 15px; font-weight: 600; padding: 0 18px; height: 44px; display: inline-flex; align-items: center; border-radius: 8px; white-space: nowrap">List your hotel</a>
+<a href="sell-financials.html" style="background: #C2410C; color: #FFFFFF; text-decoration: none; font-size: 15px; font-weight: 600; padding: 0 18px; height: 44px; display: inline-flex; align-items: center; border-radius: 8px; white-space: nowrap">List your hotel</a>
 <button type="button" class="menu-btn" aria-label="Open menu" style="width: 44px; height: 44px; align-items: center; justify-content: center; background: transparent; border: 1px solid rgba(255,255,255,0.3); border-radius: 8px; color: #FFFFFF; cursor: pointer">
 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"></path></svg>
 </button>
@@ -57,11 +57,11 @@ header a[style*="padding: 0 18px; height: 44px"]{padding:0 12px !important}
 
 <main>
 <!-- Hero -->
-<section style="background: #0F2A44; padding: 72px 24px 88px">
+<section style="background: linear-gradient(rgba(18,20,24,0.74), rgba(18,20,24,0.74)), url('https://images.unsplash.com/photo-1445019980597-93fa8acb246c?auto=format&fit=crop&w=900&q=70') center / cover no-repeat #1C1F24; padding: 96px 24px 104px">
 <div style="max-width: 1080px; margin: 0 auto; display: flex; flex-direction: column; gap: 32px">
 <div style="display: flex; flex-direction: column; gap: 16px; max-width: 760px">
 <h1 style="margin: 0; color: #FFFFFF; font-size: clamp(34px, 4.4vw, 56px); line-height: 1.08; font-weight: 700; letter-spacing: -0.025em">Buy and sell hotels at online auction</h1>
-<p style="margin: 0; color: #C9D6E3; font-size: 19px; line-height: 1.5">Verified listings, real financials, transparent live bidding.</p>
+<p style="margin: 0; color: #C8CDD3; font-size: 19px; line-height: 1.5">Verified listings, real financials, transparent live bidding.</p>
 </div>
 
 <form role="search" aria-label="Search hotel auctions" style="background: #FFFFFF; border-radius: 12px; padding: 12px; display: flex; flex-wrap: wrap; gap: 8px; align-items: flex-end; box-shadow: 0 12px 32px rgba(5,18,32,0.28)">
@@ -101,10 +101,10 @@ Search
 </form>
 
 <div style="display: flex; flex-wrap: wrap; gap: 8px; align-items: center">
-<span style="color: #C9D6E3; font-size: 14px; margin-right: 4px">Quick filters:</span>
+<span style="color: #C8CDD3; font-size: 14px; margin-right: 4px">Quick filters:</span>
 <template data-sc="for" list="{{chips}}" as="chip" hint-placeholder-count="5">
 <template data-sc="if" value="{{chip.on}}" hint-placeholder-val="{{false}}">
-<button type="button" aria-pressed="true" onClick="{{chip.toggle}}" style="height: 40px; padding: 0 16px; border-radius: 999px; border: 1px solid #FFFFFF; background: #FFFFFF; color: #0F2A44; font: inherit; font-size: 14px; font-weight: 600; cursor: pointer">{{chip.label}}</button>
+<button type="button" aria-pressed="true" onClick="{{chip.toggle}}" style="height: 40px; padding: 0 16px; border-radius: 999px; border: 1px solid #FFFFFF; background: #FFFFFF; color: #1C1F24; font: inherit; font-size: 14px; font-weight: 600; cursor: pointer">{{chip.label}}</button>
 </template>
 <template data-sc="if" value="{{chip.off}}" hint-placeholder-val="{{true}}">
 <button type="button" aria-pressed="false" onClick="{{chip.toggle}}" style="height: 40px; padding: 0 16px; border-radius: 999px; border: 1px solid rgba(255,255,255,0.4); background: transparent; color: #FFFFFF; font: inherit; font-size: 14px; font-weight: 500; cursor: pointer">{{chip.label}}</button>
@@ -119,7 +119,7 @@ Search
 <div style="max-width: 1280px; margin: 0 auto; display: flex; flex-direction: column; gap: 24px">
 <div style="display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 16px">
 <div style="display: flex; flex-direction: column; gap: 6px">
-<h2 style="margin: 0; font-size: 30px; font-weight: 700; letter-spacing: -0.02em; color: #0F2A44">Live hotel auctions</h2>
+<h2 style="margin: 0; font-size: 30px; font-weight: 700; letter-spacing: -0.02em; color: #1C1F24">Live hotel auctions</h2>
 <p style="margin: 0; font-size: 15px; color: #5A6675">37 properties open for bidding right now</p>
 </div>
 <a href="search.html" style="font-size: 15px; font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; padding: 10px 0">View all auctions
@@ -130,7 +130,7 @@ Search
 <div style="display: flex; gap: 4px; border-bottom: 1px solid #DDE2E8; overflow-x: auto">
 <template data-sc="for" list="{{tabs}}" as="tab" hint-placeholder-count="3">
 <template data-sc="if" value="{{tab.selected}}" hint-placeholder-val="{{false}}">
-<button type="button" aria-pressed="true" onClick="{{tab.pick}}" style="height: 48px; padding: 0 16px; background: transparent; border: 0; border-bottom: 2px solid #0F2A44; margin-bottom: -1px; color: #0F2A44; font: inherit; font-size: 15px; font-weight: 600; cursor: pointer; white-space: nowrap">{{tab.label}}</button>
+<button type="button" aria-pressed="true" onClick="{{tab.pick}}" style="height: 48px; padding: 0 16px; background: transparent; border: 0; border-bottom: 2px solid #E8590C; margin-bottom: -1px; color: #1C1F24; font: inherit; font-size: 15px; font-weight: 600; cursor: pointer; white-space: nowrap">{{tab.label}}</button>
 </template>
 <template data-sc="if" value="{{tab.unselected}}" hint-placeholder-val="{{true}}">
 <button type="button" aria-pressed="false" onClick="{{tab.pick}}" style="height: 48px; padding: 0 16px; background: transparent; border: 0; border-bottom: 2px solid transparent; margin-bottom: -1px; color: #5A6675; font: inherit; font-size: 15px; font-weight: 500; cursor: pointer; white-space: nowrap">{{tab.label}}</button>
@@ -141,11 +141,11 @@ Search
 <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 272px), 1fr)); gap: 20px">
 <template data-sc="for" list="{{cards}}" as="item" hint-placeholder-count="4">
 <article style="background: #FFFFFF; border: 1px solid #E3E6EB; border-radius: 12px; overflow: hidden; display: flex; flex-direction: column">
-<div style="position: relative; aspect-ratio: 4 / 3; background: #DFE3E8; display: flex; align-items: center; justify-content: center">
-<svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#A9B2BD" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"></rect><circle cx="9" cy="10" r="1.6"></circle><path d="m21 16-5-5-8 8"></path></svg>
+<div style="position: relative; aspect-ratio: 4 / 3; background: #DFE3E8; overflow: hidden">
+<img src="{{item.photo}}" alt="{{item.photoAlt}}" loading="lazy" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; color: transparent">
 <div style="position: absolute; top: 12px; left: 12px; display: flex; gap: 6px">
 <template data-sc="if" value="{{item.soon}}" hint-placeholder-val="{{true}}">
-<span style="display: inline-flex; align-items: center; gap: 5px; height: 26px; padding: 0 10px; border-radius: 999px; background: #FDF0D5; color: #7A4A00; font-size: 12px; font-weight: 600; border: 1px solid #F2D49B">
+<span style="display: inline-flex; align-items: center; gap: 5px; height: 26px; padding: 0 10px; border-radius: 999px; background: #FEF9C3; color: #713F12; font-size: 12px; font-weight: 600; border: 1px solid #FDE047">
 <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 2"></path></svg>
 {{item.ends}}</span>
 </template>
@@ -155,17 +155,17 @@ Search
 {{item.ends}}</span>
 </template>
 </div>
-<span style="position: absolute; left: 12px; bottom: 12px; height: 26px; padding: 0 10px; display: inline-flex; align-items: center; border-radius: 6px; background: #0F2A44; color: #FFFFFF; font-size: 12px; font-weight: 600">{{item.type}}</span>
+<span style="position: absolute; left: 12px; bottom: 12px; height: 26px; padding: 0 10px; display: inline-flex; align-items: center; border-radius: 6px; background: #1C1F24; color: #FFFFFF; font-size: 12px; font-weight: 600">{{item.type}}</span>
 <template data-sc="if" value="{{item.watched}}" hint-placeholder-val="{{false}}">
 <button type="button" aria-pressed="true" aria-label="{{item.heartLabel}}" onClick="{{item.toggle}}" style="position: absolute; top: 6px; right: 6px; width: 44px; height: 44px; border-radius: 999px; border: 0; background: transparent; display: flex; align-items: center; justify-content: center; cursor: pointer">
-<span style="width: 34px; height: 34px; border-radius: 999px; background: #FFFFFF; display: flex; align-items: center; justify-content: center; box-shadow: 0 1px 3px rgba(15,42,68,0.2)">
+<span style="width: 34px; height: 34px; border-radius: 999px; background: #FFFFFF; display: flex; align-items: center; justify-content: center; box-shadow: 0 1px 3px rgba(28,31,36,0.2)">
 <svg width="18" height="18" viewBox="0 0 24 24" fill="#C8372D" stroke="#C8372D" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M12 20s-7-4.4-9.2-9A4.8 4.8 0 0 1 12 6.3 4.8 4.8 0 0 1 21.2 11C19 15.6 12 20 12 20z"></path></svg>
 </span>
 </button>
 </template>
 <template data-sc="if" value="{{item.notWatched}}" hint-placeholder-val="{{true}}">
 <button type="button" aria-pressed="false" aria-label="{{item.heartLabel}}" onClick="{{item.toggle}}" style="position: absolute; top: 6px; right: 6px; width: 44px; height: 44px; border-radius: 999px; border: 0; background: transparent; display: flex; align-items: center; justify-content: center; cursor: pointer">
-<span style="width: 34px; height: 34px; border-radius: 999px; background: #FFFFFF; display: flex; align-items: center; justify-content: center; box-shadow: 0 1px 3px rgba(15,42,68,0.2)">
+<span style="width: 34px; height: 34px; border-radius: 999px; background: #FFFFFF; display: flex; align-items: center; justify-content: center; box-shadow: 0 1px 3px rgba(28,31,36,0.2)">
 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#3D4A5A" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M12 20s-7-4.4-9.2-9A4.8 4.8 0 0 1 12 6.3 4.8 4.8 0 0 1 21.2 11C19 15.6 12 20 12 20z"></path></svg>
 </span>
 </button>
@@ -178,7 +178,7 @@ Search
 <p style="margin: 0; font-size: 14px; color: #5A6675">{{item.city}}</p>
 </div>
 <p style="margin: 0; font-size: 13px; color: #3D4A5A">{{item.meta}}</p>
-<dl style="margin: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; background: #F6F7F9; border-radius: 8px; padding: 10px 12px">
+<dl style="margin: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; background: #F5F5F5; border-radius: 8px; padding: 10px 12px">
 <div style="display: flex; flex-direction: column; gap: 2px">
 <dt style="font-size: 11px; color: #5A6675; font-weight: 500">Occupancy</dt>
 <dd style="margin: 0; font-size: 15px; font-weight: 600; color: #14202E; font-variant-numeric: tabular-nums">{{item.occ}}</dd>
@@ -194,7 +194,7 @@ Search
 </dl>
 <div style="border-top: 1px solid #E9ECF0; padding-top: 12px; margin-top: auto; display: flex; flex-direction: column; gap: 2px">
 <span style="font-size: 12px; color: #5A6675; font-weight: 500">Current bid</span>
-<span style="font-size: 26px; font-weight: 700; color: #0F2A44; letter-spacing: -0.02em; font-variant-numeric: tabular-nums">{{item.bid}}</span>
+<span style="font-size: 26px; font-weight: 700; color: #1C1F24; letter-spacing: -0.02em; font-variant-numeric: tabular-nums">{{item.bid}}</span>
 <span style="font-size: 13px; color: #3D4A5A; display: flex; align-items: center; gap: 6px; flex-wrap: wrap">
 <span style="font-variant-numeric: tabular-nums">{{item.bids}}</span>
 <span aria-hidden="true" style="color: #A9B2BD">·</span>
@@ -218,22 +218,22 @@ Search
 <section id="how" style="padding: 56px 24px 72px">
 <div style="max-width: 1280px; margin: 0 auto; display: flex; flex-direction: column; gap: 24px">
 <div style="display: flex; flex-direction: column; gap: 6px">
-<h2 style="margin: 0; font-size: 30px; font-weight: 700; letter-spacing: -0.02em; color: #0F2A44">How it works</h2>
+<h2 style="margin: 0; font-size: 30px; font-weight: 700; letter-spacing: -0.02em; color: #1C1F24">How it works</h2>
 <p style="margin: 0; font-size: 15px; color: #5A6675">Every bidder is verified before the first bid. Every listing comes with its numbers.</p>
 </div>
 <ol style="list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 20px">
 <li style="background: #FFFFFF; border: 1px solid #E3E6EB; border-radius: 12px; padding: 28px; display: flex; flex-direction: column; gap: 14px">
-<span style="width: 40px; height: 40px; border-radius: 999px; border: 1.5px solid #0F2A44; color: #0F2A44; display: inline-flex; align-items: center; justify-content: center; font-size: 16px; font-weight: 700">1</span>
+<span style="width: 40px; height: 40px; border-radius: 999px; border: 1.5px solid #1C1F24; color: #1C1F24; display: inline-flex; align-items: center; justify-content: center; font-size: 16px; font-weight: 700">1</span>
 <h3 style="margin: 0; font-size: 19px; font-weight: 600; color: #14202E">Sign NDA and verify funds</h3>
 <p style="margin: 0; font-size: 15px; line-height: 1.55; color: #4A5666">Create an account, sign a one-time NDA, and upload proof of funds or a lender letter. Verification usually takes one business day.</p>
 </li>
 <li style="background: #FFFFFF; border: 1px solid #E3E6EB; border-radius: 12px; padding: 28px; display: flex; flex-direction: column; gap: 14px">
-<span style="width: 40px; height: 40px; border-radius: 999px; border: 1.5px solid #0F2A44; color: #0F2A44; display: inline-flex; align-items: center; justify-content: center; font-size: 16px; font-weight: 700">2</span>
+<span style="width: 40px; height: 40px; border-radius: 999px; border: 1.5px solid #1C1F24; color: #1C1F24; display: inline-flex; align-items: center; justify-content: center; font-size: 16px; font-weight: 700">2</span>
 <h3 style="margin: 0; font-size: 19px; font-weight: 600; color: #14202E">Review financials and bid</h3>
 <p style="margin: 0; font-size: 15px; line-height: 1.55; color: #4A5666">Open the data room for the trailing-12 P&amp;L, STR reports, franchise agreement and PIP. Bid live, or set a maximum and let proxy bidding work for you.</p>
 </li>
 <li style="background: #FFFFFF; border: 1px solid #E3E6EB; border-radius: 12px; padding: 28px; display: flex; flex-direction: column; gap: 14px">
-<span style="width: 40px; height: 40px; border-radius: 999px; border: 1.5px solid #0F2A44; color: #0F2A44; display: inline-flex; align-items: center; justify-content: center; font-size: 16px; font-weight: 700">3</span>
+<span style="width: 40px; height: 40px; border-radius: 999px; border: 1.5px solid #1C1F24; color: #1C1F24; display: inline-flex; align-items: center; justify-content: center; font-size: 16px; font-weight: 700">3</span>
 <h3 style="margin: 0; font-size: 19px; font-weight: 600; color: #14202E">Win, then close with escrow</h3>
 <p style="margin: 0; font-size: 15px; line-height: 1.55; color: #4A5666">The winning bidder signs the purchase agreement and wires the deposit to a licensed escrow agent. A typical close takes 30 to 45 days.</p>
 </li>
@@ -242,15 +242,15 @@ Search
 </section>
 
 <!-- Seller band -->
-<section style="background: #E6EEF6; padding: 56px 24px">
+<section style="background: #FFF1E6; padding: 56px 24px">
 <div style="max-width: 1280px; margin: 0 auto; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 24px">
 <div style="display: flex; flex-direction: column; gap: 8px; max-width: 640px">
-<h2 style="margin: 0; font-size: 30px; font-weight: 700; letter-spacing: -0.02em; color: #0F2A44">Own a hotel? List it in minutes</h2>
+<h2 style="margin: 0; font-size: 30px; font-weight: 700; letter-spacing: -0.02em; color: #1C1F24">Own a hotel? List it in minutes</h2>
 <p style="margin: 0; font-size: 16px; line-height: 1.5; color: #3D4A5A">Upload your T-12 and photos, set a reserve price, and reach verified buyers across the country.</p>
 </div>
 <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 16px">
 <a href="#" style="font-size: 15px; font-weight: 600; text-decoration: none; padding: 12px 4px">See seller fees</a>
-<a href="sell-financials.html" style="background: #0F2A44; color: #FFFFFF; text-decoration: none; font-size: 16px; font-weight: 600; padding: 0 24px; height: 48px; display: inline-flex; align-items: center; border-radius: 8px">List your hotel</a>
+<a href="sell-financials.html" style="background: #C2410C; color: #FFFFFF; text-decoration: none; font-size: 16px; font-weight: 600; padding: 0 24px; height: 48px; display: inline-flex; align-items: center; border-radius: 8px">List your hotel</a>
 </div>
 </div>
 </section>
@@ -260,7 +260,7 @@ Search
 <footer style="background: #FFFFFF; border-top: 1px solid #E3E6EB; padding: 32px 24px">
 <div style="max-width: 1280px; margin: 0 auto; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px">
 <div style="display: flex; align-items: center; gap: 10px">
-<span style="width: 26px; height: 26px; border-radius: 6px; background: #0F2A44; display: inline-flex; align-items: center; justify-content: center">
+<span style="width: 26px; height: 26px; border-radius: 6px; background: #E8590C; display: inline-flex; align-items: center; justify-content: center">
 <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.06" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.8 11.6 12 5.3l8.2 6.3"></path><circle cx="12" cy="13.9" r="2.45" fill="#FFFFFF" stroke="none"></circle><path d="M10.5 15h3l.8 3.75h-4.6z" fill="#FFFFFF" stroke="none"></path></svg>
 </span>
 <span style="font-size: 14px; color: #5A6675">© 2026 InnAuction. All rights reserved.</span>
@@ -277,6 +277,7 @@ Search
 </div>
 </template>
 <div id="dc-root"></div>
+<script>window.PHOTOS={"Hampton Inn Springfield South":"https://images.unsplash.com/photo-1577784424946-e12c7b211249?auto=format&fit=crop&w=900&q=70","Hampton Inn Eau Claire":"https://images.unsplash.com/photo-1741487433406-d0fd4d788fb4?auto=format&fit=crop&w=900&q=70","Riverbend Motor Lodge":"https://images.unsplash.com/photo-1570812764427-462d55d1faed?auto=format&fit=crop&w=900&q=70","The Larkspur":"https://images.unsplash.com/photo-1759038086403-c607d67bb245?auto=format&fit=crop&w=900&q=70","WoodSpring Suites Amarillo":"https://images.unsplash.com/photo-1654783860623-8804ecbd53af?auto=format&fit=crop&w=900&q=70","Days Inn Rapid City":"https://images.unsplash.com/photo-1740436868369-197a83ebf1b5?auto=format&fit=crop&w=900&q=70","Seabrook Shores Resort":"https://images.unsplash.com/photo-1757839939502-afa95e78dd60?auto=format&fit=crop&w=900&q=70","Holiday Inn Peoria Downtown":"https://images.unsplash.com/photo-1564605503931-f7cd30c93c53?auto=format&fit=crop&w=900&q=70","Northwoods Inn & Suites":"https://images.unsplash.com/photo-1654198465391-9d81326238d7?auto=format&fit=crop&w=900&q=70","Cedar Pines Motel":"https://images.unsplash.com/photo-1692691129283-1995771bb70a?auto=format&fit=crop&w=900&q=70","Comfort Inn Rochester":"https://images.unsplash.com/photo-1564605503978-7650b149b9c0?auto=format&fit=crop&w=900&q=70","Prairie Rose Inn":"https://images.unsplash.com/photo-1523459231854-ec3ba323a2e7?auto=format&fit=crop&w=900&q=70","Quality Inn Joplin":"https://images.unsplash.com/photo-1455587734955-081b22074882?auto=format&fit=crop&w=900&q=70","Super 8 Mankato":"https://images.unsplash.com/photo-1692691129283-1995771bb70a?auto=format&fit=crop&w=900&q=70","Riverside Motel":"https://images.unsplash.com/photo-1654198465391-9d81326238d7?auto=format&fit=crop&w=900&q=70"};window.GALLERY=["https://images.unsplash.com/photo-1577784424946-e12c7b211249?auto=format&fit=crop&w=900&q=70","https://images.unsplash.com/photo-1759038086403-c607d67bb245?auto=format&fit=crop&w=900&q=70","https://images.unsplash.com/photo-1611892440504-42a792e24d32?auto=format&fit=crop&w=900&q=70","https://images.unsplash.com/photo-1698653223783-d6cce8281606?auto=format&fit=crop&w=900&q=70","https://images.unsplash.com/photo-1775993167276-743bbcde77e1?auto=format&fit=crop&w=900&q=70"];</script>
 <script src="runtime.js"></script>
 <script>
 class Component extends DCLogic {

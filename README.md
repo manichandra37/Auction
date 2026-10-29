@@ -21,3 +21,9 @@ Open `index.html` in a browser, or serve the folder: `python3 -m http.server`.
 ## Publish with GitHub Pages
 
 Settings → Pages → Build and deployment → Deploy from a branch → `main` / `(root)`.
+
+## Photos
+
+Hotel photos are loaded from [Unsplash](https://unsplash.com) and used under the
+[Unsplash License](https://unsplash.com/license) (free for commercial use, no attribution required).
+They are placeholders for real listing photos.
